@@ -1,6 +1,6 @@
-# bySIMMED Hello PWA - Backend
+# bySIMMED ERP - Backend
 
-Backend de validación para el proyecto PWA de bySIMMED. API simple en Node.js + TypeScript + Express.
+Backend del Sistema ERP para bySIMMED. API en Node.js + TypeScript + Express.
 
 ## 🚀 Desarrollo Local
 

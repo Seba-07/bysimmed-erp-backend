@@ -28,7 +28,7 @@ app.get('/health', (req, res) => {
 
 app.get('/api/hello', (req, res) => {
   res.json({
-    message: 'Hola bySIMMED desde Railway',
+    message: 'Hola bySIMMED ERP desde Railway',
     timestamp: new Date().toISOString(),
     env: NODE_ENV
   });
@@ -43,7 +43,7 @@ app.use('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Servidor bySIMMED backend ejecutándose en puerto ${PORT}`);
+  console.log(`🚀 Servidor bySIMMED ERP backend ejecutándose en puerto ${PORT}`);
   console.log(`📝 Entorno: ${NODE_ENV}`);
   console.log(`🌐 CORS Origins: ${corsOrigins.length > 0 ? corsOrigins.join(', ') : 'Permitir todo (dev)'}`);
 });
