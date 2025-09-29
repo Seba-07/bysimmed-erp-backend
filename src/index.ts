@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import { connectDatabase } from './database.js';
+import { Patient } from './models/Patient.js';
 
 // Cargar variables de entorno
 dotenv.config();
@@ -48,11 +49,70 @@ app.get('/api/database', (req, res) => {
   });
 });
 
+// ENDPOINTS DE PACIENTES
+app.get('/api/patients', async (req, res) => {
+  try {
+    const patients = await Patient.find().sort({ fechaCreacion: -1 });
+    res.json({
+      success: true,
+      count: patients.length,
+      data: patients
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error al obtener pacientes',
+      error: error instanceof Error ? error.message : 'Error desconocido'
+    });
+  }
+});
+
+app.post('/api/patients', async (req, res) => {
+  try {
+    const { nombre, email, telefono } = req.body;
+
+    if (!nombre || !email || !telefono) {
+      return res.status(400).json({
+        success: false,
+        message: 'Todos los campos son requeridos (nombre, email, telefono)'
+      });
+    }
+
+    const newPatient = new Patient({
+      nombre,
+      email,
+      telefono
+    });
+
+    const savedPatient = await newPatient.save();
+
+    res.status(201).json({
+      success: true,
+      message: 'Paciente creado exitosamente',
+      data: savedPatient
+    });
+  } catch (error) {
+    if (error instanceof Error && error.name === 'ValidationError') {
+      return res.status(400).json({
+        success: false,
+        message: 'Error de validación',
+        error: error.message
+      });
+    }
+
+    res.status(500).json({
+      success: false,
+      message: 'Error al crear paciente',
+      error: error instanceof Error ? error.message : 'Error desconocido'
+    });
+  }
+});
+
 // Manejo de rutas no encontradas
 app.use('*', (req, res) => {
   res.status(404).json({
     error: 'Endpoint no encontrado',
-    availableEndpoints: ['/health', '/api/hello', '/api/database']
+    availableEndpoints: ['/health', '/api/hello', '/api/database', '/api/patients']
   });
 });
 
