@@ -4,7 +4,7 @@ export interface IMaterial extends Document {
   nombre: string;
   descripcion?: string;
   imagen?: string;
-  unidad: string; // ej: kg, litros, unidades, metros, etc.
+  unidad: mongoose.Types.ObjectId | string;
   stock: number;
   precioUnitario: number;
   fechaCreacion: Date;
@@ -27,9 +27,9 @@ const MaterialSchema = new Schema<IMaterial>({
     default: null
   },
   unidad: {
-    type: String,
-    required: [true, 'La unidad es requerida'],
-    trim: true
+    type: Schema.Types.ObjectId,
+    ref: 'Unit',
+    required: [true, 'La unidad es requerida']
   },
   stock: {
     type: Number,

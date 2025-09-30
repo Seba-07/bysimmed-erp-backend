@@ -5,6 +5,8 @@ import { connectDatabase } from './database.js';
 import materialsRouter from './routes/materials.js';
 import componentsRouter from './routes/components.js';
 import modelsRouter from './routes/models.js';
+import unitsRouter from './routes/units.js';
+import { seedUnits } from './seeds/units.js';
 
 // Cargar variables de entorno
 dotenv.config();
@@ -44,6 +46,7 @@ app.get('/api/hello', (req, res) => {
 });
 
 // Rutas de inventario
+app.use('/api/inventory/units', unitsRouter);
 app.use('/api/inventory/materials', materialsRouter);
 app.use('/api/inventory/components', componentsRouter);
 app.use('/api/inventory/models', modelsRouter);
@@ -52,7 +55,7 @@ app.use('/api/inventory/models', modelsRouter);
 app.use('*', (req, res) => {
   res.status(404).json({
     error: 'Endpoint no encontrado',
-    availableEndpoints: ['/health', '/api/hello', '/api/inventory/materials', '/api/inventory/components', '/api/inventory/models']
+    availableEndpoints: ['/health', '/api/hello', '/api/inventory/units', '/api/inventory/materials', '/api/inventory/components', '/api/inventory/models']
   });
 });
 
@@ -61,6 +64,9 @@ const startServer = async () => {
   try {
     // Conectar a MongoDB
     await connectDatabase();
+
+    // Poblar unidades por defecto
+    await seedUnits();
 
     // Iniciar servidor
     app.listen(PORT, () => {

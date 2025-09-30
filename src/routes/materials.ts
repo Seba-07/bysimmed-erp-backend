@@ -6,7 +6,9 @@ const router = Router();
 // GET - Obtener todos los materiales
 router.get('/', async (req, res) => {
   try {
-    const materials = await Material.find().sort({ fechaCreacion: -1 });
+    const materials = await Material.find()
+      .populate('unidad', 'nombre abreviatura')
+      .sort({ fechaCreacion: -1 });
     res.json({
       success: true,
       count: materials.length,
@@ -24,7 +26,8 @@ router.get('/', async (req, res) => {
 // GET - Obtener un material por ID
 router.get('/:id', async (req, res) => {
   try {
-    const material = await Material.findById(req.params.id);
+    const material = await Material.findById(req.params.id)
+      .populate('unidad', 'nombre abreviatura');
 
     if (!material) {
       return res.status(404).json({
