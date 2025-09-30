@@ -6,6 +6,7 @@ import materialsRouter from './routes/materials.js';
 import componentsRouter from './routes/components.js';
 import modelsRouter from './routes/models.js';
 import unitsRouter from './routes/units.js';
+import productionOrdersRouter from './routes/productionOrders.js';
 import { seedUnits } from './seeds/units.js';
 
 // Cargar variables de entorno
@@ -51,11 +52,14 @@ app.use('/api/inventory/materials', materialsRouter);
 app.use('/api/inventory/components', componentsRouter);
 app.use('/api/inventory/models', modelsRouter);
 
+// Rutas de producción
+app.use('/api/production/orders', productionOrdersRouter);
+
 // Manejo de rutas no encontradas
 app.use('*', (req, res) => {
   res.status(404).json({
     error: 'Endpoint no encontrado',
-    availableEndpoints: ['/health', '/api/hello', '/api/inventory/units', '/api/inventory/materials', '/api/inventory/components', '/api/inventory/models']
+    availableEndpoints: ['/health', '/api/hello', '/api/inventory/units', '/api/inventory/materials', '/api/inventory/components', '/api/inventory/models', '/api/production/orders']
   });
 });
 
