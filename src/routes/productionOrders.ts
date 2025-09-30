@@ -1,20 +1,21 @@
 import { Router } from 'express';
 import { ProductionOrder } from '../models/ProductionOrder.js';
+import { Component } from '../models/Component.js';
+import { Model } from '../models/Model.js';
 
 const router = Router();
 
 // GET - Obtener todas las órdenes (con filtros opcionales)
 router.get('/', async (req, res) => {
   try {
-    const { estado, prioridad } = req.query;
+    const { estado, cliente } = req.query;
 
     let filter: any = {};
     if (estado) filter.estado = estado;
-    if (prioridad) filter.prioridad = prioridad;
+    if (cliente) filter.cliente = new RegExp(cliente as string, 'i');
 
     const orders = await ProductionOrder.find(filter)
-      .populate('itemId')
-      .sort({ fechaLimite: 1, prioridad: -1 }); // Ordenar por fecha límite y prioridad
+      .sort({ fechaLimite: 1, fechaCreacion: -1 });
 
     res.json({
       success: true,
@@ -33,7 +34,7 @@ router.get('/', async (req, res) => {
 // GET - Obtener una orden por ID
 router.get('/:id', async (req, res) => {
   try {
-    const order = await ProductionOrder.findById(req.params.id).populate('itemId');
+    const order = await ProductionOrder.findById(req.params.id);
 
     if (!order) {
       return res.status(404).json({
@@ -55,36 +56,71 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// POST - Crear una nueva orden de fabricación
-router.post('/', async (req, res) => {
+// GET - Obtener componentes de un modelo
+router.get('/model/:modelId/components', async (req, res) => {
   try {
-    const { itemId, itemType, itemName, cantidad, fechaLimite, prioridad, notas } = req.body;
+    const model = await Model.findById(req.params.modelId).populate('componentes.componenteId');
 
-    if (!itemId || !itemType || !itemName || !cantidad || !fechaLimite) {
-      return res.status(400).json({
+    if (!model) {
+      return res.status(404).json({
         success: false,
-        message: 'Los campos itemId, itemType, itemName, cantidad y fechaLimite son requeridos'
+        message: 'Modelo no encontrado'
       });
     }
 
+    res.json({
+      success: true,
+      data: {
+        modelId: model._id,
+        modelName: model.nombre,
+        componentes: model.componentes
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error al obtener componentes del modelo',
+      error: error instanceof Error ? error.message : 'Error desconocido'
+    });
+  }
+});
+
+// POST - Crear una nueva orden de fabricación
+router.post('/', async (req, res) => {
+  try {
+    const { cliente, productos, fechaLimite, notas } = req.body;
+
+    if (!cliente || !productos || !Array.isArray(productos) || productos.length === 0 || !fechaLimite) {
+      return res.status(400).json({
+        success: false,
+        message: 'Los campos cliente, productos (array no vacío) y fechaLimite son requeridos'
+      });
+    }
+
+    // Validar que cada producto tenga los campos necesarios
+    for (const producto of productos) {
+      if (!producto.itemId || !producto.itemType || !producto.itemName || !producto.cantidad) {
+        return res.status(400).json({
+          success: false,
+          message: 'Cada producto debe tener itemId, itemType, itemName y cantidad'
+        });
+      }
+    }
+
     const newOrder = new ProductionOrder({
-      itemId,
-      itemType,
-      itemName,
-      cantidad,
+      cliente,
+      productos,
       fechaLimite,
-      prioridad: prioridad || 'media',
       notas,
-      estado: 'pendiente'
+      estado: 'activa'
     });
 
     const savedOrder = await newOrder.save();
-    const populatedOrder = await ProductionOrder.findById(savedOrder._id).populate('itemId');
 
     res.status(201).json({
       success: true,
       message: 'Orden de fabricación creada exitosamente',
-      data: populatedOrder
+      data: savedOrder
     });
   } catch (error) {
     if (error instanceof Error && error.name === 'ValidationError') {
@@ -106,7 +142,7 @@ router.post('/', async (req, res) => {
 // PUT - Actualizar una orden de fabricación
 router.put('/:id', async (req, res) => {
   try {
-    const { cantidad, fechaLimite, estado, prioridad, notas } = req.body;
+    const { cliente, productos, fechaLimite, estado, notas } = req.body;
 
     const order = await ProductionOrder.findById(req.params.id);
 
@@ -117,19 +153,18 @@ router.put('/:id', async (req, res) => {
       });
     }
 
-    if (cantidad !== undefined) order.cantidad = cantidad;
+    if (cliente !== undefined) order.cliente = cliente;
+    if (productos !== undefined) order.productos = productos;
     if (fechaLimite) order.fechaLimite = fechaLimite;
     if (estado) order.estado = estado;
-    if (prioridad) order.prioridad = prioridad;
     if (notas !== undefined) order.notas = notas;
 
     const updatedOrder = await order.save();
-    const populatedOrder = await ProductionOrder.findById(updatedOrder._id).populate('itemId');
 
     res.json({
       success: true,
       message: 'Orden de fabricación actualizada exitosamente',
-      data: populatedOrder
+      data: updatedOrder
     });
   } catch (error) {
     if (error instanceof Error && error.name === 'ValidationError') {
@@ -179,7 +214,7 @@ router.patch('/:id/estado', async (req, res) => {
   try {
     const { estado } = req.body;
 
-    if (!estado || !['pendiente', 'en_proceso', 'completado', 'cancelado'].includes(estado)) {
+    if (!estado || !['activa', 'en_proceso', 'completada', 'cancelada'].includes(estado)) {
       return res.status(400).json({
         success: false,
         message: 'Estado inválido'
