@@ -8,7 +8,14 @@ const router = Router();
 router.get('/', async (req, res) => {
   try {
     const components = await Component.find()
-      .populate('materiales.materialId', 'nombre unidad precioUnitario')
+      .populate({
+        path: 'materiales.materialId',
+        select: 'nombre unidad precioUnitario',
+        populate: {
+          path: 'unidad',
+          select: 'nombre abreviatura'
+        }
+      })
       .sort({ fechaCreacion: -1 });
 
     res.json({
@@ -29,7 +36,14 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const component = await Component.findById(req.params.id)
-      .populate('materiales.materialId', 'nombre unidad precioUnitario');
+      .populate({
+        path: 'materiales.materialId',
+        select: 'nombre unidad precioUnitario',
+        populate: {
+          path: 'unidad',
+          select: 'nombre abreviatura'
+        }
+      });
 
     if (!component) {
       return res.status(404).json({
@@ -87,7 +101,14 @@ router.post('/', async (req, res) => {
 
     const savedComponent = await newComponent.save();
     const populatedComponent = await Component.findById(savedComponent._id)
-      .populate('materiales.materialId', 'nombre unidad precioUnitario');
+      .populate({
+        path: 'materiales.materialId',
+        select: 'nombre unidad precioUnitario',
+        populate: {
+          path: 'unidad',
+          select: 'nombre abreviatura'
+        }
+      });
 
     res.status(201).json({
       success: true,
@@ -154,7 +175,14 @@ router.put('/:id', async (req, res) => {
 
     const updatedComponent = await component.save();
     const populatedComponent = await Component.findById(updatedComponent._id)
-      .populate('materiales.materialId', 'nombre unidad precioUnitario');
+      .populate({
+        path: 'materiales.materialId',
+        select: 'nombre unidad precioUnitario',
+        populate: {
+          path: 'unidad',
+          select: 'nombre abreviatura'
+        }
+      });
 
     res.json({
       success: true,
