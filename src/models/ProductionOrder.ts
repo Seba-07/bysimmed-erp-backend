@@ -51,7 +51,7 @@ const OrderProductSchema = new Schema<IOrderProduct>({
 const ProductionOrderSchema = new Schema<IProductionOrder>({
   numeroOrden: {
     type: String,
-    required: true,
+    required: false, // El middleware pre-save lo genera automáticamente
     unique: true,
     trim: true
   },
