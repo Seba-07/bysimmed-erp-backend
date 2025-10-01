@@ -52,7 +52,7 @@ router.get('/:id', async (req, res) => {
 // POST - Crear un nuevo material
 router.post('/', async (req, res) => {
   try {
-    const { nombre, descripcion, imagen, unidad, stock, precioUnitario } = req.body;
+    const { nombre, descripcion, imagen, categoria, unidad, stock, precioUnitario } = req.body;
 
     if (!nombre || !unidad) {
       return res.status(400).json({
@@ -65,6 +65,7 @@ router.post('/', async (req, res) => {
       nombre,
       descripcion,
       imagen,
+      categoria: categoria || 'Silicona',
       unidad,
       stock: stock || 0,
       precioUnitario: precioUnitario || 0
@@ -104,7 +105,7 @@ router.post('/', async (req, res) => {
 // PUT - Actualizar un material
 router.put('/:id', async (req, res) => {
   try {
-    const { nombre, descripcion, imagen, unidad, stock, precioUnitario } = req.body;
+    const { nombre, descripcion, imagen, categoria, unidad, stock, precioUnitario } = req.body;
 
     const material = await Material.findById(req.params.id);
 
@@ -118,6 +119,7 @@ router.put('/:id', async (req, res) => {
     if (nombre) material.nombre = nombre;
     if (descripcion !== undefined) material.descripcion = descripcion;
     if (imagen !== undefined) material.imagen = imagen;
+    if (categoria) material.categoria = categoria;
     if (unidad) material.unidad = unidad;
     if (stock !== undefined) material.stock = stock;
     if (precioUnitario !== undefined) material.precioUnitario = precioUnitario;

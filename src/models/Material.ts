@@ -4,6 +4,7 @@ export interface IMaterial extends Document {
   nombre: string;
   descripcion?: string;
   imagen?: string;
+  categoria: 'Accesorios' | 'Aditivos' | 'Filamentos' | 'Limpieza' | 'Pegamentos' | 'Resina' | 'Silicona';
   unidad: mongoose.Types.ObjectId | string;
   stock: number;
   precioUnitario: number;
@@ -25,6 +26,12 @@ const MaterialSchema = new Schema<IMaterial>({
   imagen: {
     type: String,
     default: null
+  },
+  categoria: {
+    type: String,
+    enum: ['Accesorios', 'Aditivos', 'Filamentos', 'Limpieza', 'Pegamentos', 'Resina', 'Silicona'],
+    required: [true, 'La categoría es requerida'],
+    default: 'Silicona'
   },
   unidad: {
     type: Schema.Types.ObjectId,
