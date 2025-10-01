@@ -4,6 +4,8 @@ export interface IRestockRequest extends Document {
   materialId: mongoose.Types.ObjectId;
   presentacion: string;
   cantidad: number;
+  solicitante: string;
+  prioridad: 'baja' | 'media' | 'urgente';
   estado: 'pendiente' | 'en_revision' | 'en_gestion' | 'en_transito' | 'entregado' | 'cancelada';
   fechaSolicitud: Date;
   fechaRevision?: Date;
@@ -31,6 +33,17 @@ const RestockRequestSchema = new Schema<IRestockRequest>({
     type: Number,
     required: [true, 'La cantidad es requerida'],
     min: [1, 'La cantidad debe ser al menos 1']
+  },
+  solicitante: {
+    type: String,
+    required: [true, 'El solicitante es requerido'],
+    trim: true
+  },
+  prioridad: {
+    type: String,
+    enum: ['baja', 'media', 'urgente'],
+    required: [true, 'La prioridad es requerida'],
+    default: 'media'
   },
   estado: {
     type: String,

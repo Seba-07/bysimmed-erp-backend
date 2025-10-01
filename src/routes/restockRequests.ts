@@ -60,12 +60,12 @@ router.get('/pending/:materialId', async (req, res) => {
 // POST - Crear una nueva solicitud de reposición
 router.post('/', async (req, res) => {
   try {
-    const { materialId, presentacion, cantidad, notas } = req.body;
+    const { materialId, presentacion, cantidad, solicitante, prioridad, notas } = req.body;
 
-    if (!materialId || !presentacion || !cantidad) {
+    if (!materialId || !presentacion || !cantidad || !solicitante) {
       return res.status(400).json({
         success: false,
-        message: 'Los campos materialId, presentacion y cantidad son requeridos'
+        message: 'Los campos materialId, presentacion, cantidad y solicitante son requeridos'
       });
     }
 
@@ -93,6 +93,8 @@ router.post('/', async (req, res) => {
       materialId,
       presentacion,
       cantidad,
+      solicitante,
+      prioridad: prioridad || 'media',
       notas
     });
 
