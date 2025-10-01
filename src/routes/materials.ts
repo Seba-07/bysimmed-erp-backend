@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { Material } from '../models/Material.js';
+import { RestockRequest } from '../models/RestockRequest.js';
 
 const router = Router();
 
@@ -9,10 +10,26 @@ router.get('/', async (req, res) => {
     const materials = await Material.find()
       .populate('unidadBase', 'nombre abreviatura')
       .sort({ fechaCreacion: -1 });
+
+    // Agregar información de solicitudes de reposición pendientes
+    const materialsWithRestock = await Promise.all(
+      materials.map(async (material) => {
+        const pendingRequests = await RestockRequest.countDocuments({
+          materialId: material._id,
+          estado: 'pendiente'
+        });
+        return {
+          ...material.toObject(),
+          hasPendingRestock: pendingRequests > 0,
+          pendingRestockCount: pendingRequests
+        };
+      })
+    );
+
     res.json({
       success: true,
-      count: materials.length,
-      data: materials
+      count: materialsWithRestock.length,
+      data: materialsWithRestock
     });
   } catch (error) {
     res.status(500).json({
@@ -36,9 +53,21 @@ router.get('/:id', async (req, res) => {
       });
     }
 
+    // Agregar información de solicitudes de reposición pendientes
+    const pendingRequests = await RestockRequest.countDocuments({
+      materialId: material._id,
+      estado: 'pendiente'
+    });
+
+    const materialWithRestock = {
+      ...material.toObject(),
+      hasPendingRestock: pendingRequests > 0,
+      pendingRestockCount: pendingRequests
+    };
+
     res.json({
       success: true,
-      data: material
+      data: materialWithRestock
     });
   } catch (error) {
     res.status(500).json({
