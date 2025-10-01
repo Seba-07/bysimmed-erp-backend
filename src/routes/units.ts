@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { Unit } from '../models/Unit.js';
+import { Material } from '../models/Material.js';
 
 const router = Router();
 
@@ -131,6 +132,16 @@ router.put('/:id', async (req, res) => {
 // DELETE - Eliminar una unidad
 router.delete('/:id', async (req, res) => {
   try {
+    // Verificar si la unidad está siendo usada por algún material
+    const materialsUsingUnit = await Material.countDocuments({ unidadBase: req.params.id });
+
+    if (materialsUsingUnit > 0) {
+      return res.status(400).json({
+        success: false,
+        message: `No se puede eliminar la unidad porque está siendo usada por ${materialsUsingUnit} material(es)`
+      });
+    }
+
     const unit = await Unit.findByIdAndDelete(req.params.id);
 
     if (!unit) {

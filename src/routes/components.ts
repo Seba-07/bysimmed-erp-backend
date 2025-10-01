@@ -10,9 +10,9 @@ router.get('/', async (req, res) => {
     const components = await Component.find()
       .populate({
         path: 'materiales.materialId',
-        select: 'nombre unidad precioUnitario',
+        select: 'nombre unidadBase precioUnitario presentaciones',
         populate: {
-          path: 'unidad',
+          path: 'unidadBase',
           select: 'nombre abreviatura'
         }
       })
@@ -38,9 +38,9 @@ router.get('/:id', async (req, res) => {
     const component = await Component.findById(req.params.id)
       .populate({
         path: 'materiales.materialId',
-        select: 'nombre unidad precioUnitario',
+        select: 'nombre unidadBase precioUnitario presentaciones',
         populate: {
-          path: 'unidad',
+          path: 'unidadBase',
           select: 'nombre abreviatura'
         }
       });
@@ -103,9 +103,9 @@ router.post('/', async (req, res) => {
     const populatedComponent = await Component.findById(savedComponent._id)
       .populate({
         path: 'materiales.materialId',
-        select: 'nombre unidad precioUnitario',
+        select: 'nombre unidadBase precioUnitario presentaciones',
         populate: {
-          path: 'unidad',
+          path: 'unidadBase',
           select: 'nombre abreviatura'
         }
       });
@@ -177,9 +177,9 @@ router.put('/:id', async (req, res) => {
     const populatedComponent = await Component.findById(updatedComponent._id)
       .populate({
         path: 'materiales.materialId',
-        select: 'nombre unidad precioUnitario',
+        select: 'nombre unidadBase precioUnitario presentaciones',
         populate: {
-          path: 'unidad',
+          path: 'unidadBase',
           select: 'nombre abreviatura'
         }
       });

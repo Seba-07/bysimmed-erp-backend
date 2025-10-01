@@ -7,7 +7,7 @@ const router = Router();
 router.get('/', async (req, res) => {
   try {
     const materials = await Material.find()
-      .populate('unidad', 'nombre abreviatura')
+      .populate('unidadBase', 'nombre abreviatura')
       .sort({ fechaCreacion: -1 });
     res.json({
       success: true,
@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const material = await Material.findById(req.params.id)
-      .populate('unidad', 'nombre abreviatura');
+      .populate('unidadBase', 'nombre abreviatura');
 
     if (!material) {
       return res.status(404).json({
@@ -52,12 +52,12 @@ router.get('/:id', async (req, res) => {
 // POST - Crear un nuevo material
 router.post('/', async (req, res) => {
   try {
-    const { nombre, descripcion, imagen, categoria, unidad, stock, precioUnitario } = req.body;
+    const { nombre, descripcion, imagen, categoria, unidadBase, stock, precioUnitario, presentaciones } = req.body;
 
-    if (!nombre || !unidad) {
+    if (!nombre || !unidadBase) {
       return res.status(400).json({
         success: false,
-        message: 'Los campos nombre y unidad son requeridos'
+        message: 'Los campos nombre y unidadBase son requeridos'
       });
     }
 
@@ -66,9 +66,10 @@ router.post('/', async (req, res) => {
       descripcion,
       imagen,
       categoria: categoria || 'Silicona',
-      unidad,
+      unidadBase,
       stock: stock || 0,
-      precioUnitario: precioUnitario || 0
+      precioUnitario: precioUnitario || 0,
+      presentaciones: presentaciones || []
     });
 
     const savedMaterial = await newMaterial.save();
@@ -105,7 +106,7 @@ router.post('/', async (req, res) => {
 // PUT - Actualizar un material
 router.put('/:id', async (req, res) => {
   try {
-    const { nombre, descripcion, imagen, categoria, unidad, stock, precioUnitario } = req.body;
+    const { nombre, descripcion, imagen, categoria, unidadBase, stock, precioUnitario, presentaciones } = req.body;
 
     const material = await Material.findById(req.params.id);
 
@@ -120,9 +121,10 @@ router.put('/:id', async (req, res) => {
     if (descripcion !== undefined) material.descripcion = descripcion;
     if (imagen !== undefined) material.imagen = imagen;
     if (categoria) material.categoria = categoria;
-    if (unidad) material.unidad = unidad;
+    if (unidadBase) material.unidadBase = unidadBase;
     if (stock !== undefined) material.stock = stock;
     if (precioUnitario !== undefined) material.precioUnitario = precioUnitario;
+    if (presentaciones !== undefined) material.presentaciones = presentaciones;
 
     const updatedMaterial = await material.save();
 
