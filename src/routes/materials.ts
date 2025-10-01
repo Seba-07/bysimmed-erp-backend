@@ -11,12 +11,12 @@ router.get('/', async (req, res) => {
       .populate('unidadBase', 'nombre abreviatura')
       .sort({ fechaCreacion: -1 });
 
-    // Agregar información de solicitudes de reposición pendientes
+    // Agregar información de solicitudes de reposición activas (no entregadas ni canceladas)
     const materialsWithRestock = await Promise.all(
       materials.map(async (material) => {
         const pendingRequests = await RestockRequest.countDocuments({
           materialId: material._id,
-          estado: 'pendiente'
+          estado: { $nin: ['entregado', 'cancelada'] }
         });
         return {
           ...material.toObject(),
@@ -53,10 +53,10 @@ router.get('/:id', async (req, res) => {
       });
     }
 
-    // Agregar información de solicitudes de reposición pendientes
+    // Agregar información de solicitudes de reposición activas
     const pendingRequests = await RestockRequest.countDocuments({
       materialId: material._id,
-      estado: 'pendiente'
+      estado: { $nin: ['entregado', 'cancelada'] }
     });
 
     const materialWithRestock = {

@@ -4,10 +4,15 @@ export interface IRestockRequest extends Document {
   materialId: mongoose.Types.ObjectId;
   presentacion: string;
   cantidad: number;
-  estado: 'pendiente' | 'procesada' | 'cancelada';
+  estado: 'pendiente' | 'en_revision' | 'en_gestion' | 'en_transito' | 'entregado' | 'cancelada';
   fechaSolicitud: Date;
-  fechaProcesada?: Date;
+  fechaRevision?: Date;
+  fechaGestion?: Date;
+  fechaTransito?: Date;
+  fechaEntrega?: Date;
+  fechaCancelacion?: Date;
   notas?: string;
+  notasInternas?: string;
 }
 
 const RestockRequestSchema = new Schema<IRestockRequest>({
@@ -29,19 +34,38 @@ const RestockRequestSchema = new Schema<IRestockRequest>({
   },
   estado: {
     type: String,
-    enum: ['pendiente', 'procesada', 'cancelada'],
-    default: 'pendiente'
+    enum: ['pendiente', 'en_revision', 'en_gestion', 'en_transito', 'entregado', 'cancelada'],
+    default: 'pendiente',
+    comment: 'Estados: pendiente → en_revision → en_gestion → en_transito → entregado'
   },
   fechaSolicitud: {
     type: Date,
     default: Date.now
   },
-  fechaProcesada: {
+  fechaRevision: {
+    type: Date
+  },
+  fechaGestion: {
+    type: Date
+  },
+  fechaTransito: {
+    type: Date
+  },
+  fechaEntrega: {
+    type: Date
+  },
+  fechaCancelacion: {
     type: Date
   },
   notas: {
     type: String,
-    trim: true
+    trim: true,
+    comment: 'Notas del solicitante'
+  },
+  notasInternas: {
+    type: String,
+    trim: true,
+    comment: 'Notas internas para gestión'
   }
 });
 

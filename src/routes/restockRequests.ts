@@ -124,7 +124,7 @@ router.post('/', async (req, res) => {
 // PUT - Actualizar estado de una solicitud
 router.put('/:id', async (req, res) => {
   try {
-    const { estado, notas } = req.body;
+    const { estado, notas, notasInternas } = req.body;
 
     const request = await RestockRequest.findById(req.params.id);
 
@@ -137,11 +137,29 @@ router.put('/:id', async (req, res) => {
 
     if (estado) {
       request.estado = estado;
-      if (estado === 'procesada') {
-        request.fechaProcesada = new Date();
+      const now = new Date();
+
+      // Actualizar fechas según el estado
+      switch (estado) {
+        case 'en_revision':
+          request.fechaRevision = now;
+          break;
+        case 'en_gestion':
+          request.fechaGestion = now;
+          break;
+        case 'en_transito':
+          request.fechaTransito = now;
+          break;
+        case 'entregado':
+          request.fechaEntrega = now;
+          break;
+        case 'cancelada':
+          request.fechaCancelacion = now;
+          break;
       }
     }
     if (notas !== undefined) request.notas = notas;
+    if (notasInternas !== undefined) request.notasInternas = notasInternas;
 
     const updatedRequest = await request.save();
     const populatedRequest = await RestockRequest.findById(updatedRequest._id)
