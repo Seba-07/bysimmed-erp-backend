@@ -7,6 +7,14 @@ import componentsRouter from './routes/components.js';
 import modelsRouter from './routes/models.js';
 import unitsRouter from './routes/units.js';
 import productionOrdersRouter from './routes/productionOrders.js';
+import restockRequestsRouter from './routes/restockRequests.js';
+import cotizacionesRouter from './routes/cotizaciones.js';
+import ordenesCompraRouter from './routes/ordenesCompra.js';
+import postVentaRouter from './routes/postVenta.js';
+import proveedoresRouter from './routes/proveedores.js';
+import comprasRouter from './routes/compras.js';
+import gastosRouter from './routes/gastos.js';
+import finanzasRouter from './routes/finanzas.js';
 import { seedUnits } from './seeds/units.js';
 // Cargar variables de entorno
 dotenv.config();
@@ -44,13 +52,42 @@ app.use('/api/inventory/units', unitsRouter);
 app.use('/api/inventory/materials', materialsRouter);
 app.use('/api/inventory/components', componentsRouter);
 app.use('/api/inventory/models', modelsRouter);
+app.use('/api/inventory/restock-requests', restockRequestsRouter);
 // Rutas de producción
 app.use('/api/production/orders', productionOrdersRouter);
+// Rutas de ventas
+app.use('/api/ventas/cotizaciones', cotizacionesRouter);
+app.use('/api/ventas/ordenes-compra', ordenesCompraRouter);
+// Rutas de post-venta
+app.use('/api/post-venta', postVentaRouter);
+// Rutas de finanzas
+app.use('/api/finanzas/proveedores', proveedoresRouter);
+app.use('/api/finanzas/compras', comprasRouter);
+app.use('/api/finanzas/gastos', gastosRouter);
+app.use('/api/finanzas', finanzasRouter);
 // Manejo de rutas no encontradas
 app.use('*', (req, res) => {
     res.status(404).json({
         error: 'Endpoint no encontrado',
-        availableEndpoints: ['/health', '/api/hello', '/api/inventory/units', '/api/inventory/materials', '/api/inventory/components', '/api/inventory/models', '/api/production/orders']
+        availableEndpoints: [
+            '/health',
+            '/api/hello',
+            '/api/inventory/units',
+            '/api/inventory/materials',
+            '/api/inventory/components',
+            '/api/inventory/models',
+            '/api/inventory/restock-requests',
+            '/api/production/orders',
+            '/api/ventas/cotizaciones',
+            '/api/ventas/ordenes-compra',
+            '/api/post-venta/clientes',
+            '/api/post-venta/equipos',
+            '/api/finanzas/proveedores',
+            '/api/finanzas/compras',
+            '/api/finanzas/gastos',
+            '/api/finanzas/cuentas-bancarias',
+            '/api/finanzas/cuentas-por-cobrar'
+        ]
     });
 });
 // Inicializar servidor

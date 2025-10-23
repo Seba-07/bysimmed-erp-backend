@@ -14,17 +14,43 @@ const MaterialSchema = new Schema({
         type: String,
         default: null
     },
-    unidad: {
+    categoria: {
+        type: String,
+        enum: ['Accesorios', 'Aditivos', 'Filamentos', 'Limpieza', 'Pegamentos', 'Resina', 'Silicona'],
+        required: [true, 'La categoría es requerida'],
+        default: 'Silicona'
+    },
+    unidadBase: {
         type: Schema.Types.ObjectId,
         ref: 'Unit',
-        required: [true, 'La unidad es requerida']
+        required: [true, 'La unidad base es requerida']
     },
     stock: {
         type: Number,
         required: [true, 'El stock es requerido'],
         min: [0, 'El stock no puede ser negativo'],
-        default: 0
+        default: 0,
+        comment: 'Stock siempre en unidad base (ej: gramos, ml, unidades)'
     },
+    presentaciones: [{
+            nombre: {
+                type: String,
+                required: true,
+                trim: true
+            },
+            factorConversion: {
+                type: Number,
+                required: true,
+                min: [0, 'El factor de conversión debe ser positivo'],
+                comment: 'Cuántas unidades base tiene esta presentación (ej: 1 frasco = 900 gramos)'
+            },
+            precioCompra: {
+                type: Number,
+                min: [0, 'El precio no puede ser negativo'],
+                default: 0,
+                comment: 'Precio de compra de esta presentación'
+            }
+        }],
     precioUnitario: {
         type: Number,
         required: [true, 'El precio unitario es requerido'],

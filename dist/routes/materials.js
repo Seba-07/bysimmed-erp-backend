@@ -1,16 +1,29 @@
 import { Router } from 'express';
 import { Material } from '../models/Material.js';
+import { RestockRequest } from '../models/RestockRequest.js';
 const router = Router();
 // GET - Obtener todos los materiales
 router.get('/', async (req, res) => {
     try {
         const materials = await Material.find()
-            .populate('unidad', 'nombre abreviatura')
+            .populate('unidadBase', 'nombre abreviatura')
             .sort({ fechaCreacion: -1 });
+        // Agregar información de solicitudes de reposición activas (no entregadas ni canceladas)
+        const materialsWithRestock = await Promise.all(materials.map(async (material) => {
+            const pendingRequests = await RestockRequest.countDocuments({
+                materialId: material._id,
+                estado: { $nin: ['entregado', 'cancelada'] }
+            });
+            return {
+                ...material.toObject(),
+                hasPendingRestock: pendingRequests > 0,
+                pendingRestockCount: pendingRequests
+            };
+        }));
         res.json({
             success: true,
-            count: materials.length,
-            data: materials
+            count: materialsWithRestock.length,
+            data: materialsWithRestock
         });
     }
     catch (error) {
@@ -25,16 +38,26 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const material = await Material.findById(req.params.id)
-            .populate('unidad', 'nombre abreviatura');
+            .populate('unidadBase', 'nombre abreviatura');
         if (!material) {
             return res.status(404).json({
                 success: false,
                 message: 'Material no encontrado'
             });
         }
+        // Agregar información de solicitudes de reposición activas
+        const pendingRequests = await RestockRequest.countDocuments({
+            materialId: material._id,
+            estado: { $nin: ['entregado', 'cancelada'] }
+        });
+        const materialWithRestock = {
+            ...material.toObject(),
+            hasPendingRestock: pendingRequests > 0,
+            pendingRestockCount: pendingRequests
+        };
         res.json({
             success: true,
-            data: material
+            data: materialWithRestock
         });
     }
     catch (error) {
@@ -48,20 +71,22 @@ router.get('/:id', async (req, res) => {
 // POST - Crear un nuevo material
 router.post('/', async (req, res) => {
     try {
-        const { nombre, descripcion, imagen, unidad, stock, precioUnitario } = req.body;
-        if (!nombre || !unidad) {
+        const { nombre, descripcion, imagen, categoria, unidadBase, stock, precioUnitario, presentaciones } = req.body;
+        if (!nombre || !unidadBase) {
             return res.status(400).json({
                 success: false,
-                message: 'Los campos nombre y unidad son requeridos'
+                message: 'Los campos nombre y unidadBase son requeridos'
             });
         }
         const newMaterial = new Material({
             nombre,
             descripcion,
             imagen,
-            unidad,
+            categoria: categoria || 'Silicona',
+            unidadBase,
             stock: stock || 0,
-            precioUnitario: precioUnitario || 0
+            precioUnitario: precioUnitario || 0,
+            presentaciones: presentaciones || []
         });
         const savedMaterial = await newMaterial.save();
         res.status(201).json({
@@ -94,7 +119,7 @@ router.post('/', async (req, res) => {
 // PUT - Actualizar un material
 router.put('/:id', async (req, res) => {
     try {
-        const { nombre, descripcion, imagen, unidad, stock, precioUnitario } = req.body;
+        const { nombre, descripcion, imagen, categoria, unidadBase, stock, precioUnitario, presentaciones } = req.body;
         const material = await Material.findById(req.params.id);
         if (!material) {
             return res.status(404).json({
@@ -108,12 +133,16 @@ router.put('/:id', async (req, res) => {
             material.descripcion = descripcion;
         if (imagen !== undefined)
             material.imagen = imagen;
-        if (unidad)
-            material.unidad = unidad;
+        if (categoria)
+            material.categoria = categoria;
+        if (unidadBase)
+            material.unidadBase = unidadBase;
         if (stock !== undefined)
             material.stock = stock;
         if (precioUnitario !== undefined)
             material.precioUnitario = precioUnitario;
+        if (presentaciones !== undefined)
+            material.presentaciones = presentaciones;
         const updatedMaterial = await material.save();
         res.json({
             success: true,
