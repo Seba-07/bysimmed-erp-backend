@@ -6,11 +6,20 @@ const cotizacionSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  numeroSecuencial: {
+    type: Number,
+    required: true
+  },
   numeroRecotizacion: {
     type: Number,
     default: 0
   },
   cliente: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Cliente',
+    required: true
+  },
+  clienteNombre: {
     type: String,
     required: true,
     trim: true

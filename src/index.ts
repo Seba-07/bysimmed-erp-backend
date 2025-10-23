@@ -11,6 +11,7 @@ import restockRequestsRouter from './routes/restockRequests.js';
 import cotizacionesRouter from './routes/cotizaciones.js';
 import ordenesCompraRouter from './routes/ordenesCompra.js';
 import postVentaRouter from './routes/postVenta.js';
+import clientesRouter from './routes/clientes.js';
 import proveedoresRouter from './routes/proveedores.js';
 import comprasRouter from './routes/compras.js';
 import gastosRouter from './routes/gastos.js';
@@ -65,6 +66,7 @@ app.use('/api/inventory/restock-requests', restockRequestsRouter);
 app.use('/api/production/orders', productionOrdersRouter);
 
 // Rutas de ventas
+app.use('/api/ventas/clientes', clientesRouter);
 app.use('/api/ventas/cotizaciones', cotizacionesRouter);
 app.use('/api/ventas/ordenes-compra', ordenesCompraRouter);
 
@@ -90,6 +92,7 @@ app.use('*', (req, res) => {
       '/api/inventory/models',
       '/api/inventory/restock-requests',
       '/api/production/orders',
+      '/api/ventas/clientes',
       '/api/ventas/cotizaciones',
       '/api/ventas/ordenes-compra',
       '/api/post-venta/clientes',

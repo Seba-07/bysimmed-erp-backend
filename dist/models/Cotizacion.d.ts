@@ -5,9 +5,11 @@ declare const _default: mongoose.Model<{
 } & {
     estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
     fechaSolicitud: NativeDate;
-    cliente: string;
+    cliente: mongoose.Types.ObjectId;
     numero: string;
+    numeroSecuencial: number;
     numeroRecotizacion: number;
+    clienteNombre: string;
     notas?: string | null | undefined;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
@@ -18,9 +20,11 @@ declare const _default: mongoose.Model<{
 } & {
     estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
     fechaSolicitud: NativeDate;
-    cliente: string;
+    cliente: mongoose.Types.ObjectId;
     numero: string;
+    numeroSecuencial: number;
     numeroRecotizacion: number;
+    clienteNombre: string;
     notas?: string | null | undefined;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
@@ -33,9 +37,11 @@ declare const _default: mongoose.Model<{
 } & {
     estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
     fechaSolicitud: NativeDate;
-    cliente: string;
+    cliente: mongoose.Types.ObjectId;
     numero: string;
+    numeroSecuencial: number;
     numeroRecotizacion: number;
+    clienteNombre: string;
     notas?: string | null | undefined;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
@@ -52,9 +58,11 @@ declare const _default: mongoose.Model<{
 } & {
     estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
     fechaSolicitud: NativeDate;
-    cliente: string;
+    cliente: mongoose.Types.ObjectId;
     numero: string;
+    numeroSecuencial: number;
     numeroRecotizacion: number;
+    clienteNombre: string;
     notas?: string | null | undefined;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
@@ -65,9 +73,11 @@ declare const _default: mongoose.Model<{
 } & {
     estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
     fechaSolicitud: NativeDate;
-    cliente: string;
+    cliente: mongoose.Types.ObjectId;
     numero: string;
+    numeroSecuencial: number;
     numeroRecotizacion: number;
+    clienteNombre: string;
     notas?: string | null | undefined;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
@@ -80,9 +90,11 @@ declare const _default: mongoose.Model<{
 } & {
     estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
     fechaSolicitud: NativeDate;
-    cliente: string;
+    cliente: mongoose.Types.ObjectId;
     numero: string;
+    numeroSecuencial: number;
     numeroRecotizacion: number;
+    clienteNombre: string;
     notas?: string | null | undefined;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
