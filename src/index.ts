@@ -14,6 +14,7 @@ import modelosRouter from './routes/modelos.js';
 import componentesRouter from './routes/componentes.js';
 import materialesRouter from './routes/materiales.js';
 import currencyRouter from './routes/currency.js';
+import empresasRouter from './routes/empresas.js';
 
 // Cargar variables de entorno
 dotenv.config();
@@ -58,6 +59,7 @@ app.use('/api/inventario/componentes', componentesRouter);
 app.use('/api/inventario/materiales', materialesRouter);
 
 // Rutas de ventas
+app.use('/api/ventas/empresas', empresasRouter);
 app.use('/api/ventas/clientes', clientesRouter);
 app.use('/api/ventas/cotizaciones', cotizacionesRouter);
 app.use('/api/ventas/ordenes-compra', ordenesCompraRouter);
@@ -84,6 +86,7 @@ app.use('*', (req, res) => {
       '/api/inventario/modelos',
       '/api/inventario/componentes',
       '/api/inventario/materiales',
+      '/api/ventas/empresas',
       '/api/ventas/clientes',
       '/api/ventas/cotizaciones',
       '/api/ventas/ordenes-compra',

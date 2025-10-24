@@ -1,24 +1,22 @@
 import mongoose from 'mongoose';
-const clienteSchema = new mongoose.Schema({
+const empresaSchema = new mongoose.Schema({
     nombre: {
         type: String,
         required: true,
-        trim: true
-    },
-    empresa: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Empresa',
-        required: false
+        trim: true,
+        unique: true
     },
     rut: {
         type: String,
-        trim: true
+        trim: true,
+        unique: true,
+        sparse: true
     },
-    email: {
+    razonSocial: {
         type: String,
         trim: true
     },
-    telefono: {
+    giro: {
         type: String,
         trim: true
     },
@@ -26,13 +24,21 @@ const clienteSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    codigoCliente: {
+    ciudad: {
         type: String,
-        required: true,
-        unique: true,
-        trim: true,
-        maxlength: 4,
-        uppercase: true
+        trim: true
+    },
+    telefono: {
+        type: String,
+        trim: true
+    },
+    email: {
+        type: String,
+        trim: true
+    },
+    sitioWeb: {
+        type: String,
+        trim: true
     },
     activo: {
         type: Boolean,
@@ -44,5 +50,5 @@ const clienteSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
-export default mongoose.model('Cliente', clienteSchema);
-//# sourceMappingURL=Cliente.js.map
+export default mongoose.model('Empresa', empresaSchema);
+//# sourceMappingURL=Empresa.js.map

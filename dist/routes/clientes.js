@@ -4,7 +4,7 @@ const router = express.Router();
 // Obtener todos los clientes
 router.get('/', async (req, res) => {
     try {
-        const clientes = await Cliente.find().sort({ nombre: 1 });
+        const clientes = await Cliente.find().populate('empresa').sort({ nombre: 1 });
         res.json(clientes);
     }
     catch (error) {
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 // Obtener un cliente por ID
 router.get('/:id', async (req, res) => {
     try {
-        const cliente = await Cliente.findById(req.params.id);
+        const cliente = await Cliente.findById(req.params.id).populate('empresa');
         if (!cliente) {
             return res.status(404).json({ message: 'Cliente no encontrado' });
         }
