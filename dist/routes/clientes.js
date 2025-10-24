@@ -1,5 +1,5 @@
 import express from 'express';
-import Cliente from '../models/Cliente';
+import Cliente from '../models/Cliente.js';
 const router = express.Router();
 // Obtener todos los clientes
 router.get('/', async (req, res) => {
