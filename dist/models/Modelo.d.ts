@@ -5,24 +5,24 @@ declare const _default: mongoose.Model<{
 } & {
     codigo: string;
     nombre: string;
-    precioUnitario: number;
     activo: boolean;
     stock: number;
     stockMinimo: number;
-    unidadMedida: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    precioVenta: number;
     descripcion?: string | null | undefined;
+    imagen?: string | null | undefined;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
     codigo: string;
     nombre: string;
-    precioUnitario: number;
     activo: boolean;
     stock: number;
     stockMinimo: number;
-    unidadMedida: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    precioVenta: number;
     descripcion?: string | null | undefined;
+    imagen?: string | null | undefined;
 }, {}, {
     timestamps: true;
 }> & {
@@ -31,12 +31,12 @@ declare const _default: mongoose.Model<{
 } & {
     codigo: string;
     nombre: string;
-    precioUnitario: number;
     activo: boolean;
     stock: number;
     stockMinimo: number;
-    unidadMedida: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    precioVenta: number;
     descripcion?: string | null | undefined;
+    imagen?: string | null | undefined;
 } & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -49,24 +49,24 @@ declare const _default: mongoose.Model<{
 } & {
     codigo: string;
     nombre: string;
-    precioUnitario: number;
     activo: boolean;
     stock: number;
     stockMinimo: number;
-    unidadMedida: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    precioVenta: number;
     descripcion?: string | null | undefined;
+    imagen?: string | null | undefined;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
     codigo: string;
     nombre: string;
-    precioUnitario: number;
     activo: boolean;
     stock: number;
     stockMinimo: number;
-    unidadMedida: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    precioVenta: number;
     descripcion?: string | null | undefined;
+    imagen?: string | null | undefined;
 }>, {}, mongoose.ResolveSchemaOptions<{
     timestamps: true;
 }>> & mongoose.FlatRecord<{
@@ -75,16 +75,16 @@ declare const _default: mongoose.Model<{
 } & {
     codigo: string;
     nombre: string;
-    precioUnitario: number;
     activo: boolean;
     stock: number;
     stockMinimo: number;
-    unidadMedida: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    precioVenta: number;
     descripcion?: string | null | undefined;
+    imagen?: string | null | undefined;
 }> & {
     _id: mongoose.Types.ObjectId;
 } & {
     __v: number;
 }>>;
 export default _default;
-//# sourceMappingURL=Material.d.ts.map
+//# sourceMappingURL=Modelo.d.ts.map

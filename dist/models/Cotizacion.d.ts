@@ -11,18 +11,27 @@ declare const _default: mongoose.Model<{
     fechaSolicitud: NativeDate;
     estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
     productos: mongoose.Types.DocumentArray<{
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
         subtotal: number;
         descripcion?: string | null | undefined;
     }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
         subtotal: number;
         descripcion?: string | null | undefined;
     }> & {
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
@@ -30,8 +39,11 @@ declare const _default: mongoose.Model<{
         descripcion?: string | null | undefined;
     }>;
     moneda: "CLP" | "USD";
+    iva: number;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
+    subtotal?: number | null | undefined;
+    tasaCambio?: number | null | undefined;
     monto?: number | null | undefined;
     notas?: string | null | undefined;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
@@ -46,18 +58,27 @@ declare const _default: mongoose.Model<{
     fechaSolicitud: NativeDate;
     estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
     productos: mongoose.Types.DocumentArray<{
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
         subtotal: number;
         descripcion?: string | null | undefined;
     }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
         subtotal: number;
         descripcion?: string | null | undefined;
     }> & {
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
@@ -65,8 +86,11 @@ declare const _default: mongoose.Model<{
         descripcion?: string | null | undefined;
     }>;
     moneda: "CLP" | "USD";
+    iva: number;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
+    subtotal?: number | null | undefined;
+    tasaCambio?: number | null | undefined;
     monto?: number | null | undefined;
     notas?: string | null | undefined;
 }, {}, {
@@ -83,18 +107,27 @@ declare const _default: mongoose.Model<{
     fechaSolicitud: NativeDate;
     estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
     productos: mongoose.Types.DocumentArray<{
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
         subtotal: number;
         descripcion?: string | null | undefined;
     }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
         subtotal: number;
         descripcion?: string | null | undefined;
     }> & {
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
@@ -102,8 +135,11 @@ declare const _default: mongoose.Model<{
         descripcion?: string | null | undefined;
     }>;
     moneda: "CLP" | "USD";
+    iva: number;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
+    subtotal?: number | null | undefined;
+    tasaCambio?: number | null | undefined;
     monto?: number | null | undefined;
     notas?: string | null | undefined;
 } & {
@@ -124,18 +160,27 @@ declare const _default: mongoose.Model<{
     fechaSolicitud: NativeDate;
     estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
     productos: mongoose.Types.DocumentArray<{
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
         subtotal: number;
         descripcion?: string | null | undefined;
     }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
         subtotal: number;
         descripcion?: string | null | undefined;
     }> & {
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
@@ -143,8 +188,11 @@ declare const _default: mongoose.Model<{
         descripcion?: string | null | undefined;
     }>;
     moneda: "CLP" | "USD";
+    iva: number;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
+    subtotal?: number | null | undefined;
+    tasaCambio?: number | null | undefined;
     monto?: number | null | undefined;
     notas?: string | null | undefined;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
@@ -159,18 +207,27 @@ declare const _default: mongoose.Model<{
     fechaSolicitud: NativeDate;
     estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
     productos: mongoose.Types.DocumentArray<{
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
         subtotal: number;
         descripcion?: string | null | undefined;
     }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
         subtotal: number;
         descripcion?: string | null | undefined;
     }> & {
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
@@ -178,8 +235,11 @@ declare const _default: mongoose.Model<{
         descripcion?: string | null | undefined;
     }>;
     moneda: "CLP" | "USD";
+    iva: number;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
+    subtotal?: number | null | undefined;
+    tasaCambio?: number | null | undefined;
     monto?: number | null | undefined;
     notas?: string | null | undefined;
 }>, {}, mongoose.ResolveSchemaOptions<{
@@ -196,18 +256,27 @@ declare const _default: mongoose.Model<{
     fechaSolicitud: NativeDate;
     estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
     productos: mongoose.Types.DocumentArray<{
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
         subtotal: number;
         descripcion?: string | null | undefined;
     }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
         subtotal: number;
         descripcion?: string | null | undefined;
     }> & {
+        tipo: "modelo" | "componente";
+        itemId: mongoose.Types.ObjectId;
+        codigo: string;
         nombre: string;
         cantidad: number;
         precioUnitario: number;
@@ -215,8 +284,11 @@ declare const _default: mongoose.Model<{
         descripcion?: string | null | undefined;
     }>;
     moneda: "CLP" | "USD";
+    iva: number;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
+    subtotal?: number | null | undefined;
+    tasaCambio?: number | null | undefined;
     monto?: number | null | undefined;
     notas?: string | null | undefined;
 }> & {

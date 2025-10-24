@@ -39,6 +39,20 @@ const cotizacionSchema = new mongoose.Schema({
         default: 'solicitada'
     },
     productos: [{
+            tipo: {
+                type: String,
+                enum: ['modelo', 'componente'],
+                required: true
+            },
+            itemId: {
+                type: mongoose.Schema.Types.ObjectId,
+                refPath: 'productos.tipo',
+                required: true
+            },
+            codigo: {
+                type: String,
+                required: true
+            },
             nombre: {
                 type: String,
                 required: true
@@ -66,6 +80,19 @@ const cotizacionSchema = new mongoose.Schema({
         type: String,
         enum: ['CLP', 'USD'],
         default: 'CLP'
+    },
+    tasaCambio: {
+        type: Number,
+        min: 0
+    },
+    subtotal: {
+        type: Number,
+        min: 0
+    },
+    iva: {
+        type: Number,
+        default: 0,
+        min: 0
     },
     monto: {
         type: Number

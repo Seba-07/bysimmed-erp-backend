@@ -4,9 +4,9 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     estado: "pendiente" | "pagado" | "vencido";
+    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     monto: number;
     numeroGasto: string;
-    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     concepto: string;
     fecha: NativeDate;
     metodoPago: "efectivo" | "transferencia" | "cheque" | "tarjeta" | "otro";
@@ -21,9 +21,9 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     estado: "pendiente" | "pagado" | "vencido";
+    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     monto: number;
     numeroGasto: string;
-    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     concepto: string;
     fecha: NativeDate;
     metodoPago: "efectivo" | "transferencia" | "cheque" | "tarjeta" | "otro";
@@ -40,9 +40,9 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     estado: "pendiente" | "pagado" | "vencido";
+    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     monto: number;
     numeroGasto: string;
-    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     concepto: string;
     fecha: NativeDate;
     metodoPago: "efectivo" | "transferencia" | "cheque" | "tarjeta" | "otro";
@@ -63,9 +63,9 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     estado: "pendiente" | "pagado" | "vencido";
+    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     monto: number;
     numeroGasto: string;
-    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     concepto: string;
     fecha: NativeDate;
     metodoPago: "efectivo" | "transferencia" | "cheque" | "tarjeta" | "otro";
@@ -80,9 +80,9 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     estado: "pendiente" | "pagado" | "vencido";
+    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     monto: number;
     numeroGasto: string;
-    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     concepto: string;
     fecha: NativeDate;
     metodoPago: "efectivo" | "transferencia" | "cheque" | "tarjeta" | "otro";
@@ -99,9 +99,9 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     estado: "pendiente" | "pagado" | "vencido";
+    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     monto: number;
     numeroGasto: string;
-    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     concepto: string;
     fecha: NativeDate;
     metodoPago: "efectivo" | "transferencia" | "cheque" | "tarjeta" | "otro";

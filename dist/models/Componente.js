@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-const materialSchema = new mongoose.Schema({
+const componenteSchema = new mongoose.Schema({
     codigo: {
         type: String,
         required: true,
@@ -16,11 +16,6 @@ const materialSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    unidadMedida: {
-        type: String,
-        required: true,
-        enum: ['unidad', 'kg', 'g', 'litro', 'ml', 'metro', 'cm', 'mm']
-    },
     stock: {
         type: Number,
         required: true,
@@ -32,7 +27,7 @@ const materialSchema = new mongoose.Schema({
         default: 0,
         min: 0
     },
-    precioUnitario: {
+    precioVenta: {
         type: Number,
         required: true,
         min: 0
@@ -44,5 +39,5 @@ const materialSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
-export default mongoose.model('Material', materialSchema);
-//# sourceMappingURL=Material.js.map
+export default mongoose.model('Componente', componenteSchema);
+//# sourceMappingURL=Componente.js.map
