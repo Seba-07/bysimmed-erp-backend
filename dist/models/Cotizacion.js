@@ -99,6 +99,9 @@ const cotizacionSchema = new mongoose.Schema({
     },
     notas: {
         type: String
+    },
+    condicionesComerciales: {
+        type: String
     }
 }, {
     timestamps: true

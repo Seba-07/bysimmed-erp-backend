@@ -28,6 +28,10 @@ const modeloSchema = new mongoose.Schema({
   imagen: {
     type: String
   },
+  pdfTecnico: {
+    type: String,
+    comment: 'URL o ruta del PDF técnico del modelo'
+  },
   stock: {
     type: Number,
     required: true,
