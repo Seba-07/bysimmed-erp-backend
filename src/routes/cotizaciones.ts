@@ -1,6 +1,10 @@
 import { Router } from 'express'
 import Cotizacion from '../models/Cotizacion.js'
 import Cliente from '../models/Cliente.js'
+import Modelo from '../models/Modelo.js'
+import { generateCotizacionPDF } from '../services/pdfGenerator.js'
+import path from 'path'
+import fs from 'fs'
 
 const router = Router()
 
@@ -172,6 +176,84 @@ router.delete('/:id', async (req, res) => {
     res.json({ message: 'Cotización eliminada correctamente' })
   } catch (error) {
     res.status(500).json({ message: 'Error al eliminar cotización', error })
+  }
+})
+
+// POST generate PDF for cotizacion
+router.post('/:id/generate-pdf', async (req, res) => {
+  try {
+    const cotizacion = await Cotizacion.findById(req.params.id)
+      .populate('cliente')
+
+    if (!cotizacion) {
+      return res.status(404).json({ message: 'Cotización no encontrada' })
+    }
+
+    // Obtener información del cliente con empresa
+    const cliente: any = cotizacion.cliente
+
+    // Preparar datos para el PDF
+    const pdfData = {
+      numero: cotizacion.numero,
+      fechaSolicitud: cotizacion.fechaSolicitud,
+      clienteNombre: cotizacion.clienteNombre,
+      clienteData: {
+        rut: cliente?.rut,
+        email: cliente?.email,
+        telefono: cliente?.telefono,
+        direccion: cliente?.direccion,
+        empresa: cliente?.empresa ? {
+          nombre: cliente.empresa.nombre,
+          rut: cliente.empresa.rut,
+          direccion: cliente.empresa.direccion
+        } : undefined
+      },
+      productos: cotizacion.productos || [],
+      moneda: cotizacion.moneda || 'CLP',
+      tasaCambio: cotizacion.tasaCambio,
+      subtotal: cotizacion.subtotal || 0,
+      iva: cotizacion.iva || 0,
+      monto: cotizacion.monto || 0,
+      notas: cotizacion.notas,
+      condicionesComerciales: cotizacion.condicionesComerciales
+    }
+
+    // Generar PDF
+    const pdfPath = await generateCotizacionPDF(pdfData)
+
+    // Guardar ruta del PDF en la cotización
+    cotizacion.set('pdfPath', pdfPath)
+    await cotizacion.save()
+
+    res.json({ message: 'PDF generado correctamente', pdfPath })
+  } catch (error) {
+    console.error('Error generating PDF:', error)
+    res.status(500).json({ message: 'Error al generar PDF', error })
+  }
+})
+
+// GET download PDF
+router.get('/:id/pdf', async (req, res) => {
+  try {
+    const cotizacion = await Cotizacion.findById(req.params.id)
+
+    if (!cotizacion) {
+      return res.status(404).json({ message: 'Cotización no encontrada' })
+    }
+
+    const pdfPath = (cotizacion as any).pdfPath
+    if (!pdfPath) {
+      return res.status(404).json({ message: 'Esta cotización no tiene PDF generado' })
+    }
+
+    const fullPath = path.join(process.cwd(), pdfPath)
+    if (!fs.existsSync(fullPath)) {
+      return res.status(404).json({ message: 'Archivo PDF no encontrado' })
+    }
+
+    res.sendFile(fullPath)
+  } catch (error) {
+    res.status(500).json({ message: 'Error al descargar PDF', error })
   }
 })
 
