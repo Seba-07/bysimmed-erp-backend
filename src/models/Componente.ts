@@ -13,18 +13,22 @@ const componenteSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  descripcion: {
-    type: String,
-    trim: true
-  },
+  materiales: [{
+    materialId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Material',
+      required: true
+    },
+    cantidad: {
+      type: Number,
+      required: true,
+      min: 0,
+      comment: 'Cantidad en unidades de fabricación del material'
+    }
+  }],
   stock: {
     type: Number,
     required: true,
-    default: 0,
-    min: 0
-  },
-  stockMinimo: {
-    type: Number,
     default: 0,
     min: 0
   },

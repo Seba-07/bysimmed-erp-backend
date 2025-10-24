@@ -6,10 +6,18 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    materiales: mongoose.Types.DocumentArray<{
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }> & {
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }>;
     stock: number;
-    stockMinimo: number;
     precioVenta: number;
-    descripcion?: string | null | undefined;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     createdAt: NativeDate;
     updatedAt: NativeDate;
@@ -17,10 +25,18 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    materiales: mongoose.Types.DocumentArray<{
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }> & {
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }>;
     stock: number;
-    stockMinimo: number;
     precioVenta: number;
-    descripcion?: string | null | undefined;
 }, {}, {
     timestamps: true;
 }> & {
@@ -30,10 +46,18 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    materiales: mongoose.Types.DocumentArray<{
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }> & {
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }>;
     stock: number;
-    stockMinimo: number;
     precioVenta: number;
-    descripcion?: string | null | undefined;
 } & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -47,10 +71,18 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    materiales: mongoose.Types.DocumentArray<{
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }> & {
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }>;
     stock: number;
-    stockMinimo: number;
     precioVenta: number;
-    descripcion?: string | null | undefined;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
@@ -58,10 +90,18 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    materiales: mongoose.Types.DocumentArray<{
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }> & {
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }>;
     stock: number;
-    stockMinimo: number;
     precioVenta: number;
-    descripcion?: string | null | undefined;
 }>, {}, mongoose.ResolveSchemaOptions<{
     timestamps: true;
 }>> & mongoose.FlatRecord<{
@@ -71,10 +111,18 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    materiales: mongoose.Types.DocumentArray<{
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }> & {
+        cantidad: number;
+        materialId: mongoose.Types.ObjectId;
+    }>;
     stock: number;
-    stockMinimo: number;
     precioVenta: number;
-    descripcion?: string | null | undefined;
 }> & {
     _id: mongoose.Types.ObjectId;
 } & {

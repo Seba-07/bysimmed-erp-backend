@@ -3,6 +3,26 @@ import Modelo from '../models/Modelo.js'
 
 const router = express.Router()
 
+// GET next codigo
+router.get('/next-codigo', async (req, res) => {
+  try {
+    const lastModelo = await Modelo.findOne().sort({ codigo: -1 })
+    let nextNum = 1
+
+    if (lastModelo && lastModelo.codigo) {
+      const match = lastModelo.codigo.match(/MOD(\d+)/)
+      if (match) {
+        nextNum = parseInt(match[1]) + 1
+      }
+    }
+
+    const codigo = `MOD${String(nextNum).padStart(4, '0')}`
+    res.json({ codigo })
+  } catch (error) {
+    res.status(500).json({ message: 'Error al generar código', error })
+  }
+})
+
 // GET all models
 router.get('/', async (req, res) => {
   try {

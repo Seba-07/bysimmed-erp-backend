@@ -6,10 +6,18 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    componentes: mongoose.Types.DocumentArray<{
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }> & {
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }>;
     stock: number;
-    stockMinimo: number;
     precioVenta: number;
-    descripcion?: string | null | undefined;
     imagen?: string | null | undefined;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     createdAt: NativeDate;
@@ -18,10 +26,18 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    componentes: mongoose.Types.DocumentArray<{
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }> & {
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }>;
     stock: number;
-    stockMinimo: number;
     precioVenta: number;
-    descripcion?: string | null | undefined;
     imagen?: string | null | undefined;
 }, {}, {
     timestamps: true;
@@ -32,10 +48,18 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    componentes: mongoose.Types.DocumentArray<{
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }> & {
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }>;
     stock: number;
-    stockMinimo: number;
     precioVenta: number;
-    descripcion?: string | null | undefined;
     imagen?: string | null | undefined;
 } & {
     _id: mongoose.Types.ObjectId;
@@ -50,10 +74,18 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    componentes: mongoose.Types.DocumentArray<{
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }> & {
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }>;
     stock: number;
-    stockMinimo: number;
     precioVenta: number;
-    descripcion?: string | null | undefined;
     imagen?: string | null | undefined;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     createdAt: NativeDate;
@@ -62,10 +94,18 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    componentes: mongoose.Types.DocumentArray<{
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }> & {
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }>;
     stock: number;
-    stockMinimo: number;
     precioVenta: number;
-    descripcion?: string | null | undefined;
     imagen?: string | null | undefined;
 }>, {}, mongoose.ResolveSchemaOptions<{
     timestamps: true;
@@ -76,10 +116,18 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    componentes: mongoose.Types.DocumentArray<{
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }> & {
+        cantidad: number;
+        componenteId: mongoose.Types.ObjectId;
+    }>;
     stock: number;
-    stockMinimo: number;
     precioVenta: number;
-    descripcion?: string | null | undefined;
     imagen?: string | null | undefined;
 }> & {
     _id: mongoose.Types.ObjectId;

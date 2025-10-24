@@ -13,14 +13,21 @@ const materialSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  descripcion: {
-    type: String,
-    trim: true
-  },
-  unidadMedida: {
+  unidadCompra: {
     type: String,
     required: true,
-    enum: ['unidad', 'kg', 'g', 'litro', 'ml', 'metro', 'cm', 'mm']
+    trim: true
+  },
+  unidadFabricacion: {
+    type: String,
+    required: true,
+    enum: ['kg', 'g', 'litro', 'ml', 'metro', 'cm', 'mm', 'unidad']
+  },
+  factorConversion: {
+    type: Number,
+    required: true,
+    min: 0,
+    comment: 'Cantidad de unidades de fabricación en una unidad de compra'
   },
   stock: {
     type: Number,
@@ -30,13 +37,15 @@ const materialSchema = new mongoose.Schema({
   },
   stockMinimo: {
     type: Number,
+    required: true,
     default: 0,
     min: 0
   },
-  precioUnitario: {
+  precioCompra: {
     type: Number,
     required: true,
-    min: 0
+    min: 0,
+    comment: 'Precio por unidad de compra'
   },
   activo: {
     type: Boolean,

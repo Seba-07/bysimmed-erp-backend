@@ -5,24 +5,26 @@ declare const _default: mongoose.Model<{
 } & {
     codigo: string;
     nombre: string;
-    precioUnitario: number;
     activo: boolean;
     stock: number;
+    unidadCompra: string;
+    unidadFabricacion: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    factorConversion: number;
     stockMinimo: number;
-    unidadMedida: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
-    descripcion?: string | null | undefined;
+    precioCompra: number;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
     codigo: string;
     nombre: string;
-    precioUnitario: number;
     activo: boolean;
     stock: number;
+    unidadCompra: string;
+    unidadFabricacion: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    factorConversion: number;
     stockMinimo: number;
-    unidadMedida: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
-    descripcion?: string | null | undefined;
+    precioCompra: number;
 }, {}, {
     timestamps: true;
 }> & {
@@ -31,12 +33,13 @@ declare const _default: mongoose.Model<{
 } & {
     codigo: string;
     nombre: string;
-    precioUnitario: number;
     activo: boolean;
     stock: number;
+    unidadCompra: string;
+    unidadFabricacion: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    factorConversion: number;
     stockMinimo: number;
-    unidadMedida: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
-    descripcion?: string | null | undefined;
+    precioCompra: number;
 } & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -49,24 +52,26 @@ declare const _default: mongoose.Model<{
 } & {
     codigo: string;
     nombre: string;
-    precioUnitario: number;
     activo: boolean;
     stock: number;
+    unidadCompra: string;
+    unidadFabricacion: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    factorConversion: number;
     stockMinimo: number;
-    unidadMedida: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
-    descripcion?: string | null | undefined;
+    precioCompra: number;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
     codigo: string;
     nombre: string;
-    precioUnitario: number;
     activo: boolean;
     stock: number;
+    unidadCompra: string;
+    unidadFabricacion: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    factorConversion: number;
     stockMinimo: number;
-    unidadMedida: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
-    descripcion?: string | null | undefined;
+    precioCompra: number;
 }>, {}, mongoose.ResolveSchemaOptions<{
     timestamps: true;
 }>> & mongoose.FlatRecord<{
@@ -75,12 +80,13 @@ declare const _default: mongoose.Model<{
 } & {
     codigo: string;
     nombre: string;
-    precioUnitario: number;
     activo: boolean;
     stock: number;
+    unidadCompra: string;
+    unidadFabricacion: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    factorConversion: number;
     stockMinimo: number;
-    unidadMedida: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
-    descripcion?: string | null | undefined;
+    precioCompra: number;
 }> & {
     _id: mongoose.Types.ObjectId;
 } & {

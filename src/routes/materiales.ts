@@ -3,6 +3,26 @@ import Material from '../models/Material.js'
 
 const router = express.Router()
 
+// GET next codigo
+router.get('/next-codigo', async (req, res) => {
+  try {
+    const lastMaterial = await Material.findOne().sort({ codigo: -1 })
+    let nextNum = 1
+
+    if (lastMaterial && lastMaterial.codigo) {
+      const match = lastMaterial.codigo.match(/MAT(\d+)/)
+      if (match) {
+        nextNum = parseInt(match[1]) + 1
+      }
+    }
+
+    const codigo = `MAT${String(nextNum).padStart(4, '0')}`
+    res.json({ codigo })
+  } catch (error) {
+    res.status(500).json({ message: 'Error al generar código', error })
+  }
+})
+
 // GET all materials
 router.get('/', async (req, res) => {
   try {

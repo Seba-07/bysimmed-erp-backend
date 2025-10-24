@@ -12,21 +12,24 @@ const modeloSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    descripcion: {
-        type: String,
-        trim: true
-    },
+    componentes: [{
+            componenteId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Componente',
+                required: true
+            },
+            cantidad: {
+                type: Number,
+                required: true,
+                min: 1
+            }
+        }],
     imagen: {
         type: String
     },
     stock: {
         type: Number,
         required: true,
-        default: 0,
-        min: 0
-    },
-    stockMinimo: {
-        type: Number,
         default: 0,
         min: 0
     },
