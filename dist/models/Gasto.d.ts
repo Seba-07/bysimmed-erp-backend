@@ -4,15 +4,15 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     estado: "pendiente" | "pagado" | "vencido";
-    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     monto: number;
     numeroGasto: string;
+    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     concepto: string;
     fecha: NativeDate;
     metodoPago: "efectivo" | "transferencia" | "cheque" | "tarjeta" | "otro";
-    categoria?: string | null | undefined;
     notas?: string | null | undefined;
     fechaPago?: NativeDate | null | undefined;
+    categoria?: string | null | undefined;
     proveedor?: string | null | undefined;
     cuentaBancaria?: string | null | undefined;
     comprobante?: string | null | undefined;
@@ -21,15 +21,15 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     estado: "pendiente" | "pagado" | "vencido";
-    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     monto: number;
     numeroGasto: string;
+    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     concepto: string;
     fecha: NativeDate;
     metodoPago: "efectivo" | "transferencia" | "cheque" | "tarjeta" | "otro";
-    categoria?: string | null | undefined;
     notas?: string | null | undefined;
     fechaPago?: NativeDate | null | undefined;
+    categoria?: string | null | undefined;
     proveedor?: string | null | undefined;
     cuentaBancaria?: string | null | undefined;
     comprobante?: string | null | undefined;
@@ -40,15 +40,15 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     estado: "pendiente" | "pagado" | "vencido";
-    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     monto: number;
     numeroGasto: string;
+    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     concepto: string;
     fecha: NativeDate;
     metodoPago: "efectivo" | "transferencia" | "cheque" | "tarjeta" | "otro";
-    categoria?: string | null | undefined;
     notas?: string | null | undefined;
     fechaPago?: NativeDate | null | undefined;
+    categoria?: string | null | undefined;
     proveedor?: string | null | undefined;
     cuentaBancaria?: string | null | undefined;
     comprobante?: string | null | undefined;
@@ -63,15 +63,15 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     estado: "pendiente" | "pagado" | "vencido";
-    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     monto: number;
     numeroGasto: string;
+    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     concepto: string;
     fecha: NativeDate;
     metodoPago: "efectivo" | "transferencia" | "cheque" | "tarjeta" | "otro";
-    categoria?: string | null | undefined;
     notas?: string | null | undefined;
     fechaPago?: NativeDate | null | undefined;
+    categoria?: string | null | undefined;
     proveedor?: string | null | undefined;
     cuentaBancaria?: string | null | undefined;
     comprobante?: string | null | undefined;
@@ -80,15 +80,15 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     estado: "pendiente" | "pagado" | "vencido";
-    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     monto: number;
     numeroGasto: string;
+    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     concepto: string;
     fecha: NativeDate;
     metodoPago: "efectivo" | "transferencia" | "cheque" | "tarjeta" | "otro";
-    categoria?: string | null | undefined;
     notas?: string | null | undefined;
     fechaPago?: NativeDate | null | undefined;
+    categoria?: string | null | undefined;
     proveedor?: string | null | undefined;
     cuentaBancaria?: string | null | undefined;
     comprobante?: string | null | undefined;
@@ -99,15 +99,15 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     estado: "pendiente" | "pagado" | "vencido";
-    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     monto: number;
     numeroGasto: string;
+    tipo: "servicios" | "otros" | "operacional" | "sueldo" | "impuestos";
     concepto: string;
     fecha: NativeDate;
     metodoPago: "efectivo" | "transferencia" | "cheque" | "tarjeta" | "otro";
-    categoria?: string | null | undefined;
     notas?: string | null | undefined;
     fechaPago?: NativeDate | null | undefined;
+    categoria?: string | null | undefined;
     proveedor?: string | null | undefined;
     cuentaBancaria?: string | null | undefined;
     comprobante?: string | null | undefined;

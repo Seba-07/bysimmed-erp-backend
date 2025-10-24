@@ -40,14 +40,12 @@ const cotizacionSchema = new mongoose.Schema({
     default: 'solicitada'
   },
   productos: [{
-    modeloId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Model',
-      required: true
-    },
-    nombreModelo: {
+    nombre: {
       type: String,
       required: true
+    },
+    descripcion: {
+      type: String
     },
     cantidad: {
       type: Number,

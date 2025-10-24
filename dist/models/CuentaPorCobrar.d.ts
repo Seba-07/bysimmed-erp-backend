@@ -3,8 +3,8 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "pendiente" | "pagado" | "vencido" | "parcial";
     cliente: string;
+    estado: "pendiente" | "pagado" | "vencido" | "parcial";
     monto: number;
     fechaEmision: NativeDate;
     numeroFactura: string;
@@ -17,8 +17,8 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "pendiente" | "pagado" | "vencido" | "parcial";
     cliente: string;
+    estado: "pendiente" | "pagado" | "vencido" | "parcial";
     monto: number;
     fechaEmision: NativeDate;
     numeroFactura: string;
@@ -33,8 +33,8 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "pendiente" | "pagado" | "vencido" | "parcial";
     cliente: string;
+    estado: "pendiente" | "pagado" | "vencido" | "parcial";
     monto: number;
     fechaEmision: NativeDate;
     numeroFactura: string;
@@ -53,8 +53,8 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "pendiente" | "pagado" | "vencido" | "parcial";
     cliente: string;
+    estado: "pendiente" | "pagado" | "vencido" | "parcial";
     monto: number;
     fechaEmision: NativeDate;
     numeroFactura: string;
@@ -67,8 +67,8 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "pendiente" | "pagado" | "vencido" | "parcial";
     cliente: string;
+    estado: "pendiente" | "pagado" | "vencido" | "parcial";
     monto: number;
     fechaEmision: NativeDate;
     numeroFactura: string;
@@ -83,8 +83,8 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "pendiente" | "pagado" | "vencido" | "parcial";
     cliente: string;
+    estado: "pendiente" | "pagado" | "vencido" | "parcial";
     monto: number;
     fechaEmision: NativeDate;
     numeroFactura: string;

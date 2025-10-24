@@ -3,23 +3,23 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "pendiente" | "cancelada" | "rechazada" | "aprobada" | "recibida";
     fechaSolicitud: NativeDate;
+    estado: "rechazada" | "pendiente" | "aprobada" | "recibida" | "cancelada";
     numeroSolicitud: string;
     proveedor: string;
     items: mongoose.Types.DocumentArray<{
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }> & {
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }>;
@@ -33,23 +33,23 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "pendiente" | "cancelada" | "rechazada" | "aprobada" | "recibida";
     fechaSolicitud: NativeDate;
+    estado: "rechazada" | "pendiente" | "aprobada" | "recibida" | "cancelada";
     numeroSolicitud: string;
     proveedor: string;
     items: mongoose.Types.DocumentArray<{
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }> & {
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }>;
@@ -65,23 +65,23 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "pendiente" | "cancelada" | "rechazada" | "aprobada" | "recibida";
     fechaSolicitud: NativeDate;
+    estado: "rechazada" | "pendiente" | "aprobada" | "recibida" | "cancelada";
     numeroSolicitud: string;
     proveedor: string;
     items: mongoose.Types.DocumentArray<{
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }> & {
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }>;
@@ -101,23 +101,23 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "pendiente" | "cancelada" | "rechazada" | "aprobada" | "recibida";
     fechaSolicitud: NativeDate;
+    estado: "rechazada" | "pendiente" | "aprobada" | "recibida" | "cancelada";
     numeroSolicitud: string;
     proveedor: string;
     items: mongoose.Types.DocumentArray<{
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }> & {
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }>;
@@ -131,23 +131,23 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "pendiente" | "cancelada" | "rechazada" | "aprobada" | "recibida";
     fechaSolicitud: NativeDate;
+    estado: "rechazada" | "pendiente" | "aprobada" | "recibida" | "cancelada";
     numeroSolicitud: string;
     proveedor: string;
     items: mongoose.Types.DocumentArray<{
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }> & {
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }>;
@@ -163,23 +163,23 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "pendiente" | "cancelada" | "rechazada" | "aprobada" | "recibida";
     fechaSolicitud: NativeDate;
+    estado: "rechazada" | "pendiente" | "aprobada" | "recibida" | "cancelada";
     numeroSolicitud: string;
     proveedor: string;
     items: mongoose.Types.DocumentArray<{
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }> & {
-        precioUnitario: number;
         cantidad: number;
+        precioUnitario: number;
         producto: string;
         unidad: string;
     }>;

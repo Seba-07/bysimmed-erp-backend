@@ -3,109 +3,109 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
-    fechaSolicitud: NativeDate;
-    cliente: mongoose.Types.ObjectId;
-    productos: mongoose.Types.DocumentArray<{
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }> & {
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }>;
     numero: string;
     numeroSecuencial: number;
     numeroRecotizacion: number;
+    cliente: mongoose.Types.ObjectId;
     clienteNombre: string;
+    fechaSolicitud: NativeDate;
+    estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
+    productos: mongoose.Types.DocumentArray<{
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }> & {
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }>;
     moneda: "CLP" | "USD";
-    notas?: string | null | undefined;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
     monto?: number | null | undefined;
+    notas?: string | null | undefined;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
-    fechaSolicitud: NativeDate;
-    cliente: mongoose.Types.ObjectId;
-    productos: mongoose.Types.DocumentArray<{
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }> & {
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }>;
     numero: string;
     numeroSecuencial: number;
     numeroRecotizacion: number;
+    cliente: mongoose.Types.ObjectId;
     clienteNombre: string;
+    fechaSolicitud: NativeDate;
+    estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
+    productos: mongoose.Types.DocumentArray<{
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }> & {
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }>;
     moneda: "CLP" | "USD";
-    notas?: string | null | undefined;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
     monto?: number | null | undefined;
+    notas?: string | null | undefined;
 }, {}, {
     timestamps: true;
 }> & {
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
-    fechaSolicitud: NativeDate;
-    cliente: mongoose.Types.ObjectId;
-    productos: mongoose.Types.DocumentArray<{
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }> & {
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }>;
     numero: string;
     numeroSecuencial: number;
     numeroRecotizacion: number;
+    cliente: mongoose.Types.ObjectId;
     clienteNombre: string;
+    fechaSolicitud: NativeDate;
+    estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
+    productos: mongoose.Types.DocumentArray<{
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }> & {
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }>;
     moneda: "CLP" | "USD";
-    notas?: string | null | undefined;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
     monto?: number | null | undefined;
+    notas?: string | null | undefined;
 } & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -116,109 +116,109 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
-    fechaSolicitud: NativeDate;
-    cliente: mongoose.Types.ObjectId;
-    productos: mongoose.Types.DocumentArray<{
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }> & {
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }>;
     numero: string;
     numeroSecuencial: number;
     numeroRecotizacion: number;
+    cliente: mongoose.Types.ObjectId;
     clienteNombre: string;
+    fechaSolicitud: NativeDate;
+    estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
+    productos: mongoose.Types.DocumentArray<{
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }> & {
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }>;
     moneda: "CLP" | "USD";
-    notas?: string | null | undefined;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
     monto?: number | null | undefined;
+    notas?: string | null | undefined;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
-    fechaSolicitud: NativeDate;
-    cliente: mongoose.Types.ObjectId;
-    productos: mongoose.Types.DocumentArray<{
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }> & {
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }>;
     numero: string;
     numeroSecuencial: number;
     numeroRecotizacion: number;
+    cliente: mongoose.Types.ObjectId;
     clienteNombre: string;
+    fechaSolicitud: NativeDate;
+    estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
+    productos: mongoose.Types.DocumentArray<{
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }> & {
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }>;
     moneda: "CLP" | "USD";
-    notas?: string | null | undefined;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
     monto?: number | null | undefined;
+    notas?: string | null | undefined;
 }>, {}, mongoose.ResolveSchemaOptions<{
     timestamps: true;
 }>> & mongoose.FlatRecord<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
-    fechaSolicitud: NativeDate;
-    cliente: mongoose.Types.ObjectId;
-    productos: mongoose.Types.DocumentArray<{
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }> & {
-        precioUnitario: number;
-        cantidad: number;
-        modeloId: mongoose.Types.ObjectId;
-        nombreModelo: string;
-        subtotal: number;
-    }>;
     numero: string;
     numeroSecuencial: number;
     numeroRecotizacion: number;
+    cliente: mongoose.Types.ObjectId;
     clienteNombre: string;
+    fechaSolicitud: NativeDate;
+    estado: "solicitada" | "enviada" | "aceptada" | "rechazada";
+    productos: mongoose.Types.DocumentArray<{
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }, mongoose.Types.Subdocument<mongoose.mongo.BSON.ObjectId, any, {
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }> & {
+        nombre: string;
+        cantidad: number;
+        precioUnitario: number;
+        subtotal: number;
+        descripcion?: string | null | undefined;
+    }>;
     moneda: "CLP" | "USD";
-    notas?: string | null | undefined;
     fechaEnvio?: NativeDate | null | undefined;
     fechaAceptacion?: NativeDate | null | undefined;
     monto?: number | null | undefined;
+    notas?: string | null | undefined;
 }> & {
     _id: mongoose.Types.ObjectId;
 } & {

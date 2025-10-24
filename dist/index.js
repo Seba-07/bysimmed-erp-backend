@@ -2,12 +2,6 @@ import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import { connectDatabase } from './database.js';
-import materialsRouter from './routes/materials.js';
-import componentsRouter from './routes/components.js';
-import modelsRouter from './routes/models.js';
-import unitsRouter from './routes/units.js';
-import productionOrdersRouter from './routes/productionOrders.js';
-import restockRequestsRouter from './routes/restockRequests.js';
 import cotizacionesRouter from './routes/cotizaciones.js';
 import ordenesCompraRouter from './routes/ordenesCompra.js';
 import postVentaRouter from './routes/postVenta.js';
@@ -16,7 +10,6 @@ import proveedoresRouter from './routes/proveedores.js';
 import comprasRouter from './routes/compras.js';
 import gastosRouter from './routes/gastos.js';
 import finanzasRouter from './routes/finanzas.js';
-import { seedUnits } from './seeds/units.js';
 // Cargar variables de entorno
 dotenv.config();
 const app = express();
@@ -48,14 +41,6 @@ app.get('/api/hello', (req, res) => {
         env: NODE_ENV
     });
 });
-// Rutas de inventario
-app.use('/api/inventory/units', unitsRouter);
-app.use('/api/inventory/materials', materialsRouter);
-app.use('/api/inventory/components', componentsRouter);
-app.use('/api/inventory/models', modelsRouter);
-app.use('/api/inventory/restock-requests', restockRequestsRouter);
-// Rutas de producción
-app.use('/api/production/orders', productionOrdersRouter);
 // Rutas de ventas
 app.use('/api/ventas/clientes', clientesRouter);
 app.use('/api/ventas/cotizaciones', cotizacionesRouter);
@@ -74,12 +59,6 @@ app.use('*', (req, res) => {
         availableEndpoints: [
             '/health',
             '/api/hello',
-            '/api/inventory/units',
-            '/api/inventory/materials',
-            '/api/inventory/components',
-            '/api/inventory/models',
-            '/api/inventory/restock-requests',
-            '/api/production/orders',
             '/api/ventas/clientes',
             '/api/ventas/cotizaciones',
             '/api/ventas/ordenes-compra',
@@ -98,8 +77,6 @@ const startServer = async () => {
     try {
         // Conectar a MongoDB
         await connectDatabase();
-        // Poblar unidades por defecto
-        await seedUnits();
         // Iniciar servidor
         app.listen(PORT, () => {
             console.log(`🚀 Servidor bySIMMED ERP backend ejecutándose en puerto ${PORT}`);

@@ -3,10 +3,10 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    fechaEntrega: NativeDate;
     cliente: string;
     modelo: string;
     numeroSerie: string;
+    fechaEntrega: NativeDate;
     notas?: string | null | undefined;
     proximaMantencion?: NativeDate | null | undefined;
     piezasReportadas?: string | null | undefined;
@@ -14,10 +14,10 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    fechaEntrega: NativeDate;
     cliente: string;
     modelo: string;
     numeroSerie: string;
+    fechaEntrega: NativeDate;
     notas?: string | null | undefined;
     proximaMantencion?: NativeDate | null | undefined;
     piezasReportadas?: string | null | undefined;
@@ -27,10 +27,10 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    fechaEntrega: NativeDate;
     cliente: string;
     modelo: string;
     numeroSerie: string;
+    fechaEntrega: NativeDate;
     notas?: string | null | undefined;
     proximaMantencion?: NativeDate | null | undefined;
     piezasReportadas?: string | null | undefined;
@@ -44,10 +44,10 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    fechaEntrega: NativeDate;
     cliente: string;
     modelo: string;
     numeroSerie: string;
+    fechaEntrega: NativeDate;
     notas?: string | null | undefined;
     proximaMantencion?: NativeDate | null | undefined;
     piezasReportadas?: string | null | undefined;
@@ -55,10 +55,10 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    fechaEntrega: NativeDate;
     cliente: string;
     modelo: string;
     numeroSerie: string;
+    fechaEntrega: NativeDate;
     notas?: string | null | undefined;
     proximaMantencion?: NativeDate | null | undefined;
     piezasReportadas?: string | null | undefined;
@@ -68,10 +68,10 @@ declare const _default: mongoose.Model<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
 } & {
-    fechaEntrega: NativeDate;
     cliente: string;
     modelo: string;
     numeroSerie: string;
+    fechaEntrega: NativeDate;
     notas?: string | null | undefined;
     proximaMantencion?: NativeDate | null | undefined;
     piezasReportadas?: string | null | undefined;

@@ -4,8 +4,8 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     nombre: string;
-    categoria: "materiales" | "componentes" | "servicios" | "otros";
     activo: boolean;
+    categoria: "materiales" | "componentes" | "servicios" | "otros";
     notas?: string | null | undefined;
     rut?: string | null | undefined;
     email?: string | null | undefined;
@@ -17,8 +17,8 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     nombre: string;
-    categoria: "materiales" | "componentes" | "servicios" | "otros";
     activo: boolean;
+    categoria: "materiales" | "componentes" | "servicios" | "otros";
     notas?: string | null | undefined;
     rut?: string | null | undefined;
     email?: string | null | undefined;
@@ -32,8 +32,8 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     nombre: string;
-    categoria: "materiales" | "componentes" | "servicios" | "otros";
     activo: boolean;
+    categoria: "materiales" | "componentes" | "servicios" | "otros";
     notas?: string | null | undefined;
     rut?: string | null | undefined;
     email?: string | null | undefined;
@@ -51,8 +51,8 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     nombre: string;
-    categoria: "materiales" | "componentes" | "servicios" | "otros";
     activo: boolean;
+    categoria: "materiales" | "componentes" | "servicios" | "otros";
     notas?: string | null | undefined;
     rut?: string | null | undefined;
     email?: string | null | undefined;
@@ -64,8 +64,8 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     nombre: string;
-    categoria: "materiales" | "componentes" | "servicios" | "otros";
     activo: boolean;
+    categoria: "materiales" | "componentes" | "servicios" | "otros";
     notas?: string | null | undefined;
     rut?: string | null | undefined;
     email?: string | null | undefined;
@@ -79,8 +79,8 @@ declare const _default: mongoose.Model<{
     updatedAt: NativeDate;
 } & {
     nombre: string;
-    categoria: "materiales" | "componentes" | "servicios" | "otros";
     activo: boolean;
+    categoria: "materiales" | "componentes" | "servicios" | "otros";
     notas?: string | null | undefined;
     rut?: string | null | undefined;
     email?: string | null | undefined;
