@@ -1,5 +1,8 @@
 import express from 'express'
 import Modelo from '../models/Modelo.js'
+import { uploadModeloPDF } from '../config/multer.js'
+import path from 'path'
+import fs from 'fs'
 
 const router = express.Router()
 
@@ -84,9 +87,77 @@ router.delete('/:id', async (req, res) => {
     if (!modelo) {
       return res.status(404).json({ message: 'Modelo no encontrado' })
     }
+
+    // Eliminar PDF técnico si existe
+    if (modelo.pdfTecnico) {
+      const pdfPath = path.join(process.cwd(), modelo.pdfTecnico)
+      if (fs.existsSync(pdfPath)) {
+        fs.unlinkSync(pdfPath)
+      }
+    }
+
     res.json({ message: 'Modelo eliminado correctamente' })
   } catch (error) {
     res.status(500).json({ message: 'Error al eliminar modelo', error })
+  }
+})
+
+// POST upload PDF técnico
+router.post('/:id/upload-pdf', uploadModeloPDF.single('pdf'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No se proporcionó archivo PDF' })
+    }
+
+    const modelo = await Modelo.findById(req.params.id)
+    if (!modelo) {
+      // Eliminar archivo subido si el modelo no existe
+      fs.unlinkSync(req.file.path)
+      return res.status(404).json({ message: 'Modelo no encontrado' })
+    }
+
+    // Eliminar PDF anterior si existe
+    if (modelo.pdfTecnico) {
+      const oldPdfPath = path.join(process.cwd(), modelo.pdfTecnico)
+      if (fs.existsSync(oldPdfPath)) {
+        fs.unlinkSync(oldPdfPath)
+      }
+    }
+
+    // Actualizar ruta del PDF
+    modelo.pdfTecnico = req.file.path
+    await modelo.save()
+
+    res.json({ message: 'PDF técnico subido correctamente', pdfTecnico: modelo.pdfTecnico })
+  } catch (error) {
+    // Eliminar archivo si hubo error
+    if (req.file) {
+      fs.unlinkSync(req.file.path)
+    }
+    res.status(500).json({ message: 'Error al subir PDF', error })
+  }
+})
+
+// GET download PDF técnico
+router.get('/:id/pdf', async (req, res) => {
+  try {
+    const modelo = await Modelo.findById(req.params.id)
+    if (!modelo) {
+      return res.status(404).json({ message: 'Modelo no encontrado' })
+    }
+
+    if (!modelo.pdfTecnico) {
+      return res.status(404).json({ message: 'Este modelo no tiene PDF técnico' })
+    }
+
+    const pdfPath = path.join(process.cwd(), modelo.pdfTecnico)
+    if (!fs.existsSync(pdfPath)) {
+      return res.status(404).json({ message: 'Archivo PDF no encontrado' })
+    }
+
+    res.sendFile(pdfPath)
+  } catch (error) {
+    res.status(500).json({ message: 'Error al descargar PDF', error })
   }
 })
 
