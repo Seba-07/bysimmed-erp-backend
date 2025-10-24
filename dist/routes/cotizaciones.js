@@ -98,50 +98,6 @@ router.put('/:id', async (req, res) => {
         res.status(400).json({ message: 'Error al actualizar cotización', error });
     }
 });
-// POST re-cotizar (create a new quotation based on existing one)
-router.post('/:id/recotizar', async (req, res) => {
-    try {
-        const cotizacionOriginal = await Cotizacion.findById(req.params.id).populate('cliente', 'nombre codigoCliente');
-        if (!cotizacionOriginal) {
-            return res.status(404).json({ message: 'Cotización original no encontrada' });
-        }
-        // Find highest numeroRecotizacion for this base quotation
-        const cotizacionesRelacionadas = await Cotizacion.find({
-            cliente: cotizacionOriginal.cliente,
-            numeroSecuencial: cotizacionOriginal.numeroSecuencial
-        }).sort({ numeroRecotizacion: -1 });
-        const nuevoNumeroRecotizacion = cotizacionesRelacionadas.length > 0
-            ? cotizacionesRelacionadas[0].numeroRecotizacion + 1
-            : 1;
-        const cliente = await Cliente.findById(cotizacionOriginal.cliente);
-        if (!cliente) {
-            return res.status(404).json({ message: 'Cliente no encontrado' });
-        }
-        // Generate new numero with re-quotation suffix
-        const numeroBase = `${cliente.codigoCliente}-${String(cotizacionOriginal.numeroSecuencial).padStart(2, '0')}`;
-        const numero = `${numeroBase}-R${nuevoNumeroRecotizacion}`;
-        // Create new quotation based on original
-        const nuevaCotizacion = new Cotizacion({
-            numero,
-            numeroSecuencial: cotizacionOriginal.numeroSecuencial,
-            numeroRecotizacion: nuevoNumeroRecotizacion,
-            cliente: cotizacionOriginal.cliente,
-            clienteNombre: cotizacionOriginal.clienteNombre,
-            fechaSolicitud: new Date(),
-            estado: 'solicitada',
-            productos: cotizacionOriginal.productos,
-            moneda: cotizacionOriginal.moneda,
-            monto: cotizacionOriginal.monto,
-            notas: req.body.notas || cotizacionOriginal.notas
-        });
-        const savedCotizacion = await nuevaCotizacion.save();
-        const populated = await Cotizacion.findById(savedCotizacion._id).populate('cliente', 'nombre codigoCliente');
-        res.status(201).json(populated);
-    }
-    catch (error) {
-        res.status(400).json({ message: 'Error al crear re-cotización', error });
-    }
-});
 // DELETE cotizacion
 router.delete('/:id', async (req, res) => {
     try {
