@@ -5,11 +5,11 @@ declare const _default: mongoose.Model<{
 } & {
     nombre: string;
     activa: boolean;
+    moneda: string;
     banco: string;
     numeroCuenta: string;
     tipoCuenta: "corriente" | "ahorro" | "vista";
     saldo: number;
-    moneda: string;
     notas?: string | null | undefined;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     createdAt: NativeDate;
@@ -17,11 +17,11 @@ declare const _default: mongoose.Model<{
 } & {
     nombre: string;
     activa: boolean;
+    moneda: string;
     banco: string;
     numeroCuenta: string;
     tipoCuenta: "corriente" | "ahorro" | "vista";
     saldo: number;
-    moneda: string;
     notas?: string | null | undefined;
 }, {}, {
     timestamps: true;
@@ -31,11 +31,11 @@ declare const _default: mongoose.Model<{
 } & {
     nombre: string;
     activa: boolean;
+    moneda: string;
     banco: string;
     numeroCuenta: string;
     tipoCuenta: "corriente" | "ahorro" | "vista";
     saldo: number;
-    moneda: string;
     notas?: string | null | undefined;
 } & {
     _id: mongoose.Types.ObjectId;
@@ -49,11 +49,11 @@ declare const _default: mongoose.Model<{
 } & {
     nombre: string;
     activa: boolean;
+    moneda: string;
     banco: string;
     numeroCuenta: string;
     tipoCuenta: "corriente" | "ahorro" | "vista";
     saldo: number;
-    moneda: string;
     notas?: string | null | undefined;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     createdAt: NativeDate;
@@ -61,11 +61,11 @@ declare const _default: mongoose.Model<{
 } & {
     nombre: string;
     activa: boolean;
+    moneda: string;
     banco: string;
     numeroCuenta: string;
     tipoCuenta: "corriente" | "ahorro" | "vista";
     saldo: number;
-    moneda: string;
     notas?: string | null | undefined;
 }>, {}, mongoose.ResolveSchemaOptions<{
     timestamps: true;
@@ -75,11 +75,11 @@ declare const _default: mongoose.Model<{
 } & {
     nombre: string;
     activa: boolean;
+    moneda: string;
     banco: string;
     numeroCuenta: string;
     tipoCuenta: "corriente" | "ahorro" | "vista";
     saldo: number;
-    moneda: string;
     notas?: string | null | undefined;
 }> & {
     _id: mongoose.Types.ObjectId;

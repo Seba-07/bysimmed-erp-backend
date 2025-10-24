@@ -39,6 +39,37 @@ const cotizacionSchema = new mongoose.Schema({
     enum: ['solicitada', 'enviada', 'aceptada', 'rechazada'],
     default: 'solicitada'
   },
+  productos: [{
+    modeloId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Model',
+      required: true
+    },
+    nombreModelo: {
+      type: String,
+      required: true
+    },
+    cantidad: {
+      type: Number,
+      required: true,
+      min: 1
+    },
+    precioUnitario: {
+      type: Number,
+      required: true,
+      min: 0
+    },
+    subtotal: {
+      type: Number,
+      required: true,
+      min: 0
+    }
+  }],
+  moneda: {
+    type: String,
+    enum: ['CLP', 'USD'],
+    default: 'CLP'
+  },
   monto: {
     type: Number
   },
