@@ -208,14 +208,23 @@ router.post('/:id/generate-pdf', async (req, res) => {
           direccion: cliente.empresa.direccion
         } : undefined
       },
-      productos: cotizacion.productos || [],
+      productos: (cotizacion.productos || []).map(p => ({
+        tipo: p.tipo,
+        itemId: p.itemId.toString(),
+        codigo: p.codigo,
+        nombre: p.nombre,
+        descripcion: p.descripcion || undefined,
+        cantidad: p.cantidad,
+        precioUnitario: p.precioUnitario,
+        subtotal: p.subtotal
+      })),
       moneda: cotizacion.moneda || 'CLP',
-      tasaCambio: cotizacion.tasaCambio,
+      tasaCambio: cotizacion.tasaCambio || undefined,
       subtotal: cotizacion.subtotal || 0,
       iva: cotizacion.iva || 0,
       monto: cotizacion.monto || 0,
-      notas: cotizacion.notas,
-      condicionesComerciales: cotizacion.condicionesComerciales
+      notas: cotizacion.notas || undefined,
+      condicionesComerciales: cotizacion.condicionesComerciales || undefined
     }
 
     // Generar PDF

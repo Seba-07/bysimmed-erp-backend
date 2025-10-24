@@ -102,6 +102,10 @@ const cotizacionSchema = new mongoose.Schema({
     },
     condicionesComerciales: {
         type: String
+    },
+    pdfPath: {
+        type: String,
+        comment: 'Ruta del PDF generado de la cotización'
     }
 }, {
     timestamps: true

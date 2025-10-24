@@ -47,6 +47,7 @@ declare const _default: mongoose.Model<{
     monto?: number | null | undefined;
     notas?: string | null | undefined;
     condicionesComerciales?: string | null | undefined;
+    pdfPath?: string | null | undefined;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     createdAt: NativeDate;
     updatedAt: NativeDate;
@@ -95,6 +96,7 @@ declare const _default: mongoose.Model<{
     monto?: number | null | undefined;
     notas?: string | null | undefined;
     condicionesComerciales?: string | null | undefined;
+    pdfPath?: string | null | undefined;
 }, {}, {
     timestamps: true;
 }> & {
@@ -145,6 +147,7 @@ declare const _default: mongoose.Model<{
     monto?: number | null | undefined;
     notas?: string | null | undefined;
     condicionesComerciales?: string | null | undefined;
+    pdfPath?: string | null | undefined;
 } & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -199,6 +202,7 @@ declare const _default: mongoose.Model<{
     monto?: number | null | undefined;
     notas?: string | null | undefined;
     condicionesComerciales?: string | null | undefined;
+    pdfPath?: string | null | undefined;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
@@ -247,6 +251,7 @@ declare const _default: mongoose.Model<{
     monto?: number | null | undefined;
     notas?: string | null | undefined;
     condicionesComerciales?: string | null | undefined;
+    pdfPath?: string | null | undefined;
 }>, {}, mongoose.ResolveSchemaOptions<{
     timestamps: true;
 }>> & mongoose.FlatRecord<{
@@ -297,6 +302,7 @@ declare const _default: mongoose.Model<{
     monto?: number | null | undefined;
     notas?: string | null | undefined;
     condicionesComerciales?: string | null | undefined;
+    pdfPath?: string | null | undefined;
 }> & {
     _id: mongoose.Types.ObjectId;
 } & {

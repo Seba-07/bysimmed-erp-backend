@@ -8,7 +8,7 @@ declare const _default: mongoose.Model<{
     activo: boolean;
     stock: number;
     unidadCompra: string;
-    unidadFabricacion: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    unidadFabricacion: "cm" | "mm" | "unidad" | "kg" | "g" | "litro" | "ml" | "metro";
     factorConversion: number;
     stockMinimo: number;
     precioCompra: number;
@@ -21,7 +21,7 @@ declare const _default: mongoose.Model<{
     activo: boolean;
     stock: number;
     unidadCompra: string;
-    unidadFabricacion: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    unidadFabricacion: "cm" | "mm" | "unidad" | "kg" | "g" | "litro" | "ml" | "metro";
     factorConversion: number;
     stockMinimo: number;
     precioCompra: number;
@@ -36,7 +36,7 @@ declare const _default: mongoose.Model<{
     activo: boolean;
     stock: number;
     unidadCompra: string;
-    unidadFabricacion: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    unidadFabricacion: "cm" | "mm" | "unidad" | "kg" | "g" | "litro" | "ml" | "metro";
     factorConversion: number;
     stockMinimo: number;
     precioCompra: number;
@@ -55,7 +55,7 @@ declare const _default: mongoose.Model<{
     activo: boolean;
     stock: number;
     unidadCompra: string;
-    unidadFabricacion: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    unidadFabricacion: "cm" | "mm" | "unidad" | "kg" | "g" | "litro" | "ml" | "metro";
     factorConversion: number;
     stockMinimo: number;
     precioCompra: number;
@@ -68,7 +68,7 @@ declare const _default: mongoose.Model<{
     activo: boolean;
     stock: number;
     unidadCompra: string;
-    unidadFabricacion: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    unidadFabricacion: "cm" | "mm" | "unidad" | "kg" | "g" | "litro" | "ml" | "metro";
     factorConversion: number;
     stockMinimo: number;
     precioCompra: number;
@@ -83,7 +83,7 @@ declare const _default: mongoose.Model<{
     activo: boolean;
     stock: number;
     unidadCompra: string;
-    unidadFabricacion: "unidad" | "kg" | "g" | "litro" | "ml" | "metro" | "cm" | "mm";
+    unidadFabricacion: "cm" | "mm" | "unidad" | "kg" | "g" | "litro" | "ml" | "metro";
     factorConversion: number;
     stockMinimo: number;
     precioCompra: number;

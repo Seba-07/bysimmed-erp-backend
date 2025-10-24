@@ -6,6 +6,8 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    stock: number;
+    precioVenta: number;
     materiales: mongoose.Types.DocumentArray<{
         cantidad: number;
         materialId: mongoose.Types.ObjectId;
@@ -16,8 +18,6 @@ declare const _default: mongoose.Model<{
         cantidad: number;
         materialId: mongoose.Types.ObjectId;
     }>;
-    stock: number;
-    precioVenta: number;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     createdAt: NativeDate;
     updatedAt: NativeDate;
@@ -25,6 +25,8 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    stock: number;
+    precioVenta: number;
     materiales: mongoose.Types.DocumentArray<{
         cantidad: number;
         materialId: mongoose.Types.ObjectId;
@@ -35,8 +37,6 @@ declare const _default: mongoose.Model<{
         cantidad: number;
         materialId: mongoose.Types.ObjectId;
     }>;
-    stock: number;
-    precioVenta: number;
 }, {}, {
     timestamps: true;
 }> & {
@@ -46,6 +46,8 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    stock: number;
+    precioVenta: number;
     materiales: mongoose.Types.DocumentArray<{
         cantidad: number;
         materialId: mongoose.Types.ObjectId;
@@ -56,8 +58,6 @@ declare const _default: mongoose.Model<{
         cantidad: number;
         materialId: mongoose.Types.ObjectId;
     }>;
-    stock: number;
-    precioVenta: number;
 } & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -71,6 +71,8 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    stock: number;
+    precioVenta: number;
     materiales: mongoose.Types.DocumentArray<{
         cantidad: number;
         materialId: mongoose.Types.ObjectId;
@@ -81,8 +83,6 @@ declare const _default: mongoose.Model<{
         cantidad: number;
         materialId: mongoose.Types.ObjectId;
     }>;
-    stock: number;
-    precioVenta: number;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     createdAt: NativeDate;
     updatedAt: NativeDate;
@@ -90,6 +90,8 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    stock: number;
+    precioVenta: number;
     materiales: mongoose.Types.DocumentArray<{
         cantidad: number;
         materialId: mongoose.Types.ObjectId;
@@ -100,8 +102,6 @@ declare const _default: mongoose.Model<{
         cantidad: number;
         materialId: mongoose.Types.ObjectId;
     }>;
-    stock: number;
-    precioVenta: number;
 }>, {}, mongoose.ResolveSchemaOptions<{
     timestamps: true;
 }>> & mongoose.FlatRecord<{
@@ -111,6 +111,8 @@ declare const _default: mongoose.Model<{
     codigo: string;
     nombre: string;
     activo: boolean;
+    stock: number;
+    precioVenta: number;
     materiales: mongoose.Types.DocumentArray<{
         cantidad: number;
         materialId: mongoose.Types.ObjectId;
@@ -121,8 +123,6 @@ declare const _default: mongoose.Model<{
         cantidad: number;
         materialId: mongoose.Types.ObjectId;
     }>;
-    stock: number;
-    precioVenta: number;
 }> & {
     _id: mongoose.Types.ObjectId;
 } & {
